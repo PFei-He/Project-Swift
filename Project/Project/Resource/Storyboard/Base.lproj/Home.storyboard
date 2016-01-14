@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Ved-hm-bm2">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+    </dependencies>
+    <scenes>
+        <!--首页-->
+        <scene sceneID="WDQ-7V-UMe">
+            <objects>
+                <navigationController id="Ved-hm-bm2" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="首页" image="Home" selectedImage="Home" id="xuQ-r1-mNx"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="VF7-fl-EVt">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.01176470588" green="0.7725490196" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="qFh-Hq-Utt" kind="relationship" relationship="rootViewController" id="ypu-Pf-btu"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HRI-MC-Fj9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1141" y="-479"/>
+        </scene>
+        <!--Home View Controller-->
+        <scene sceneID="2GM-DJ-7Wv">
+            <objects>
+                <viewController id="qFh-Hq-Utt" customClass="HomeViewController" customModule="Project" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NMm-Wr-V39"/>
+                        <viewControllerLayoutGuide type="bottom" id="pQU-US-YwV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ubv-04-yrm">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="00" translatesAutoresizingMaskIntoConstraints="NO" id="cgd-P3-NZl">
+                                <rect key="frame" x="120" y="64" width="80" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="4e7-la-4dt"/>
+                                    <constraint firstAttribute="height" constant="80" id="5Va-Mp-Xq5"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="℃" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h9q-5S-8jt">
+                                <rect key="frame" x="0.0" y="144" width="320" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="6be-RW-9ll"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="城市" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yDB-jO-RT4">
+                                <rect key="frame" x="145" y="219" width="30" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="h9q-5S-8jt" firstAttribute="leading" secondItem="Ubv-04-yrm" secondAttribute="leading" id="7if-Cy-vNi"/>
+                            <constraint firstItem="yDB-jO-RT4" firstAttribute="top" secondItem="h9q-5S-8jt" secondAttribute="bottom" id="STS-Lj-OA7"/>
+                            <constraint firstItem="cgd-P3-NZl" firstAttribute="centerX" secondItem="Ubv-04-yrm" secondAttribute="centerX" id="Ti9-uP-2nK"/>
+                            <constraint firstItem="h9q-5S-8jt" firstAttribute="top" secondItem="cgd-P3-NZl" secondAttribute="bottom" id="U6T-oj-cnu"/>
+                            <constraint firstItem="cgd-P3-NZl" firstAttribute="top" secondItem="NMm-Wr-V39" secondAttribute="bottom" id="ZeS-1Z-pGX"/>
+                            <constraint firstAttribute="trailing" secondItem="h9q-5S-8jt" secondAttribute="trailing" id="gmj-CX-xal"/>
+                            <constraint firstItem="yDB-jO-RT4" firstAttribute="centerX" secondItem="Ubv-04-yrm" secondAttribute="centerX" id="rt1-rW-zuS"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="cvb-tv-vh9">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="CbY-sJ-Med">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="72b-fF-agl">
+                                <rect key="frame" x="233" y="7" width="71" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="切换城市"/>
+                                <connections>
+                                    <action selector="push:" destination="qFh-Hq-Utt" eventType="touchUpInside" id="J3b-lA-xrq"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="title" value="首页"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outlet property="cityLabel" destination="yDB-jO-RT4" id="R9i-12-AfK"/>
+                        <outlet property="temperatureLabel" destination="h9q-5S-8jt" id="LMc-ZR-GQZ"/>
+                        <segue destination="EcS-Hj-UPE" kind="push" identifier="push" id="svx-Ia-bbO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9jp-OO-JzS" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-819" y="-479"/>
+        </scene>
+        <!--City List View Controller-->
+        <scene sceneID="wwQ-D2-pYT">
+            <objects>
+                <tableViewController id="EcS-Hj-UPE" customClass="CityListViewController" customModule="Project" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="BU4-Qd-gzW">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="identifier" id="yKQ-BW-OvS">
+                                <rect key="frame" x="0.0" y="92" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yKQ-BW-OvS" id="KvR-tw-fsf">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="EcS-Hj-UPE" id="Nut-RL-6Sc"/>
+                            <outlet property="delegate" destination="EcS-Hj-UPE" id="4kG-rz-cGa"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="iy3-8M-T43"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="title" value="城市列表"/>
+                    </userDefinedRuntimeAttributes>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I64-7a-7nQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-345" y="-479"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="00" width="120" height="120"/>
+        <image name="Home" width="48" height="50"/>
+    </resources>
+</document>

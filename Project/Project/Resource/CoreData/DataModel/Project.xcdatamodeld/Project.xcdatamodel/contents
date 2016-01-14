@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9057" systemVersion="14F27" minimumToolsVersion="Automatic">
+    <entity name="Weatherinfo" representedClassName=".Weatherinfo" syncable="YES">
+        <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cityid" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="isRadar" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="njd" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="qy" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="radar" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sd" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="temp" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="time" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="wd" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ws" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="wse" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Weatherinfo" positionX="-18" positionY="27" width="128" height="225"/>
+    </elements>
+</model>

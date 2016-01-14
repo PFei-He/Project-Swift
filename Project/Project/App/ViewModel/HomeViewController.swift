@@ -1,0 +1,74 @@
+//
+//  HomeViewController.swift
+//  Project
+//
+//  Created by PFei_He on 16/1/8.
+//  Copyright © 2016年 PF-Lib. All rights reserved.
+//
+//  https://github.com/PFei-He/Project-Swift
+//
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
+//
+//  The above copyright notice and this permission notice shall be included in
+//  all copies or substantial portions of the Software.
+//
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+//  THE SOFTWARE.
+//
+//  ***** 首页 *****
+//
+
+import Builds
+import PFSwift
+import CoreData
+
+class HomeViewController: BasisViewController {
+    
+    @IBOutlet weak var cityLabel:           UILabel!
+    @IBOutlet weak var temperatureLabel:    UILabel!
+
+    private var req = WeatherRequest()
+    
+    // MARK: - Life Cycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        initRequests([req])
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        let settings = UserSettings()
+        req.requestAPI = settings.api
+        req.send()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    // MARK: - Events Management
+    
+    @IBAction func push(sender: AnyObject?) {
+        performSegueWithIdentifier("push", sender: self)
+    }
+    
+    // MARK: - Notification Management
+    
+    override func requestSuccessNotification(notification: NSNotification) {
+        super.requestSuccessNotification(notification)
+        let result = successObject as! WeatherResult
+        cityLabel.text = result.city
+        temperatureLabel.text = String(result.temp)+"℃"
+    }
+}
