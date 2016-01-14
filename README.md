@@ -31,7 +31,7 @@ Project使用`MVVM`架构搭建，共分为3个部分。
 #### 关于CocoaPods
 本项目并未使用CocoaPods进行版本管理，后续会考虑加入。
 
-#### 关于Swift
+#### 关于ObjC
 为方便开发者使用，本框架另提供了ObjC版本。[点我跳转](https://github.com/PFei-He/Project-ObjC)至`Project-ObjC`
 
 示例代码
