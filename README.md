@@ -9,7 +9,7 @@
 
 版本
 ---
-0.0.1
+0.0.2
 
 说明
 ---
@@ -22,7 +22,7 @@
 * KVC解析JSON
 
 #### 目录解释
-Project使用`MVVM`架构搭建，共分为3个部分。
+`Project`使用`MVVM`架构搭建，共分为3个部分。
 
 * Pods - CocoaPods目录，集合了工程使用的所有第三方类库，用于作为工程底层的支持。
 * Builds - 基础框架目录，提供工程使用的基础父类，提供快速开发的基本能力
@@ -31,8 +31,8 @@ Project使用`MVVM`架构搭建，共分为3个部分。
 #### 关于CocoaPods
 本项目并未使用CocoaPods进行版本管理，后续会考虑加入。
 
-#### 关于ObjC
-为方便开发者使用，本框架另提供了ObjC版本。[点我跳转](https://github.com/PFei-He/Project-ObjC)至`Project-ObjC`
+#### 关于Objective-C
+为方便开发者使用，本框架另提供了Objective-C版本。[点我跳转](https://github.com/PFei-He/Project-ObjC)至`Project-ObjC`
 
 示例代码
 ---
