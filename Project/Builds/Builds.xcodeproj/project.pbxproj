@@ -11,7 +11,6 @@
 		456E60361C47428300F1ADD9 /* BasisCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456E60351C47428300F1ADD9 /* BasisCollectionViewController.swift */; };
 		457188121C3CAB3B0016A819 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 457188111C3CAB3B0016A819 /* Pods.framework */; };
 		4578C25E1C3E0F8900968548 /* DebugMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4578C25D1C3E0F8900968548 /* DebugMode.swift */; };
-		4578C27D1C3E27F500968548 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4578C27C1C3E27F500968548 /* Network.swift */; };
 		4578C2851C3E333B00968548 /* BasisTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4578C2841C3E333B00968548 /* BasisTableViewController.swift */; };
 		4578C2871C3E334900968548 /* BasisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4578C2861C3E334900968548 /* BasisViewController.swift */; };
 		458028051C3F5308001F00A9 /* BasisRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458028041C3F5308001F00A9 /* BasisRequest.swift */; };
@@ -24,7 +23,6 @@
 		456E60351C47428300F1ADD9 /* BasisCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasisCollectionViewController.swift; sourceTree = "<group>"; };
 		457188111C3CAB3B0016A819 /* Pods.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods.framework; path = "/Users/pfei_he/Desktop/Project-Swift/Pods/../build/Debug-iphoneos/Pods.framework"; sourceTree = "<absolute>"; };
 		4578C25D1C3E0F8900968548 /* DebugMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugMode.swift; sourceTree = "<group>"; };
-		4578C27C1C3E27F500968548 /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		4578C2841C3E333B00968548 /* BasisTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasisTableViewController.swift; sourceTree = "<group>"; };
 		4578C2861C3E334900968548 /* BasisViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasisViewController.swift; sourceTree = "<group>"; };
 		458028041C3F5308001F00A9 /* BasisRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasisRequest.swift; sourceTree = "<group>"; };
@@ -92,7 +90,6 @@
 			isa = PBXGroup;
 			children = (
 				458028041C3F5308001F00A9 /* BasisRequest.swift */,
-				4578C27C1C3E27F500968548 /* Network.swift */,
 			);
 			name = Model;
 			path = Framework/Model;
@@ -209,7 +206,6 @@
 				4578C2871C3E334900968548 /* BasisViewController.swift in Sources */,
 				456E60361C47428300F1ADD9 /* BasisCollectionViewController.swift in Sources */,
 				4578C2851C3E333B00968548 /* BasisTableViewController.swift in Sources */,
-				4578C27D1C3E27F500968548 /* Network.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

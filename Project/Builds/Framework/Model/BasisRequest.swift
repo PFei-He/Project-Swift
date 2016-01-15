@@ -7,7 +7,7 @@
 //
 //  https://github.com/PFei-He/Project-Swift
 //
-//  vesion: 0.0.1
+//  vesion: 0.0.2
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -31,11 +31,15 @@
 //
 
 import PFSwift
+import Alamofire
 
 ///调试模式
 private var debugMode = false
 
 public class BasisRequest: PFModel {
+    
+    ///主机地址
+    public var hostAddress:  String!
     
     ///请求地址的接口
     public var requestAPI = String()
@@ -48,6 +52,23 @@ public class BasisRequest: PFModel {
      */
     public class func setDebugMode(debugOrNot: Bool) {
         debugMode = debugOrNot
+    }
+    
+    /**
+     单例
+     - Note: 无
+     - Parameter 无
+     - Returns: 实例
+     */
+    public class func sharedInstance() -> BasisRequest {
+        struct singleton{
+            static var BasisRequest_onceToken: dispatch_once_t = 0
+            static var instance: BasisRequest? = nil
+        }
+        dispatch_once(&singleton.BasisRequest_onceToken) { () -> Void in
+            singleton.instance = BasisRequest()
+        }
+        return singleton.instance!
     }
     
     /**
@@ -80,13 +101,25 @@ public class BasisRequest: PFModel {
      - Returns: 无
      */
     public func sendWithAPI(api: String, params: Dictionary<String, AnyObject>, results: (JSON: AnyObject?) -> Void) {
+
         if debugMode {
-            print("[ "+String(Network)+" ]"+" request sender: "+String(classForCoder))
+            print("[ "+String(classForCoder)+" ]"+" request url: "+BasisRequest.sharedInstance().hostAddress+api)
             if !params.isEmpty {
                 print("[ "+String(classForCoder)+" ]"+" request params: "+String(params))
             }
         }
-        Network.request(api, params: params, results: results)
+    
+        //发送请求
+        Alamofire.request(.POST, BasisRequest.sharedInstance().hostAddress+api, parameters: params).responseJSON(completionHandler: { [unowned self] (response) -> Void in
+            if response.result.value != nil && response.result.value is Dictionary<String, AnyObject> {//请求成功
+                results(JSON: response.result.value)
+            } else {
+                if debugMode {
+                    print("[ "+String(self.classForCoder)+" ]"+" request error: \(response.result.error)")
+                }
+                results(JSON: nil)
+            }
+        })
     }
     
     /**

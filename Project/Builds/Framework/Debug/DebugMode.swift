@@ -7,7 +7,7 @@
 //
 //  https://github.com/PFei-He/Project-Swift
 //
-//  vesion: 0.0.1
+//  vesion: 0.0.2
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -41,9 +41,8 @@ public class DebugMode: NSObject {
      - Returns: 无
      */
     public class func open(debugOrNot: Bool) {
-        Network.setDebugMode(debugOrNot)
-        BasisRequest.setDebugMode(debugOrNot)
         BasisCollectionViewController.setDebugMode(debugOrNot)
+        BasisRequest.setDebugMode(debugOrNot)
         BasisTableViewController.setDebugMode(debugOrNot)
         BasisViewController.setDebugMode(debugOrNot)
     }

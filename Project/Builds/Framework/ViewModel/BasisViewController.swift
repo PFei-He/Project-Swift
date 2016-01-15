@@ -7,7 +7,7 @@
 //
 //  https://github.com/PFei-He/Project-Swift
 //
-//  vesion: 0.0.1
+//  vesion: 0.0.2
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -121,11 +121,12 @@ public class BasisViewController: UIViewController {
      - Returns: 无
      */
     public func requestWillStartNotification(notification: NSNotification) {
-        if debugMode {
-            print("[ "+String(classForCoder)+" ]"+" request will start")
-        }
         //显示提示框
         SVProgressHUD.showWithStatus("加载中")
+        
+        if debugMode {
+            print("[ "+String(classForCoder)+" ]"+" request will start with sender: \(notification.object!)")
+        }
     }
     
     /**
@@ -135,15 +136,16 @@ public class BasisViewController: UIViewController {
      - Returns: 无
      */
     public func requestWasEndedNotification(notification: NSNotification) {
-        if debugMode {
-            print("[ "+String(classForCoder)+" ]"+" request was ended")
-        }
         if _requestSuccess {//请求成功
             //移除提示框
             SVProgressHUD.dismiss()
         } else {//请求失败
             //显示请求失败的提示框
             SVProgressHUD.showErrorWithStatus("请求失败")
+        }
+        
+        if debugMode {
+            print("[ "+String(classForCoder)+" ]"+" request was ended with sender: \(notification.object!)")
         }
     }
     
@@ -154,13 +156,14 @@ public class BasisViewController: UIViewController {
      - Returns: 无
      */
     public func requestSuccessNotification(notification: NSNotification) {
-        if debugMode {
-            print("[ "+String(classForCoder)+" ]"+" request result: \(notification.object!)")
-        }
         _successObject      = notification.object
         _additionalObjects  = notification.userInfo
         _sender             = notification.userInfo?["sender"]
         _requestSuccess     = true
+        
+        if debugMode {
+            print("[ "+String(_sender!.classForCoder)+" ]"+" request result: \(notification.object!)")
+        }
     }
     
     /**
@@ -170,13 +173,14 @@ public class BasisViewController: UIViewController {
      - Returns: 无
      */
     public func requestFailedNotification(notification: NSNotification) {
-        if debugMode {
-            print("[ "+String(classForCoder)+" ]"+" request result: \(notification.object!)")
-        }
         _failedObject       = notification.object
         _additionalObjects  = notification.userInfo
         _sender             = notification.userInfo?["sender"]
         _requestSuccess     = false
+        
+        if debugMode {
+            print("[ "+String(_sender!.classForCoder)+" ]"+" request result: \(notification.object!)")
+        }
     }
     
     // MARK: - Public Methods

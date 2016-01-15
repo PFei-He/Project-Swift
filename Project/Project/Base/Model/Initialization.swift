@@ -60,7 +60,7 @@ class Initialization: NSObject {
      - Returns: 无
      */
     class func initHost(url: String) {
-        Network.sharedInstance().hostAddress = url
+        BasisRequest.sharedInstance().hostAddress = url
     }
     
     /**
