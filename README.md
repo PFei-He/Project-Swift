@@ -96,6 +96,12 @@ override func requestSuccessNotification(notification: NSNotification) {
 
 ![Screenshot](https://github.com/PFei-He/Project-Swift/blob/master/Supports/Screenshot.png)
 
+模板中带有以下的类，请开发者自行选择继承
+* BasisModel - 数据模型和请求接口
+* BasisCollectionViewController - 图表视图控制器
+* BasisTableViewController - 列表视图控制器
+* BasisViewController - 视图控制器
+
 许可证
 ---
 `Project`使用 MIT 许可证，详情见 [LICENSE](https://raw.githubusercontent.com/PFei-He/Project-Swift/master/LICENSE) 文件。
