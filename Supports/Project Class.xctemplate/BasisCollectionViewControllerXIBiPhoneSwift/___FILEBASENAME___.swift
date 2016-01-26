@@ -1,11 +1,24 @@
 //
+//   __________   __________    _________   ___________  ___________   __________  ___________
+//  |  _______ \ |  _______ \  / _______ \ |______   __||  _________| / _________||____   ____|
+//  | |       \ || |       \ || /       \ |       | |   | |          | /               | |
+//  | |_______/ || |_______/ || |       | |       | |   | |_________ | |               | |
+//  |  ________/ |  _____  _/ | |       | | _     | |   |  _________|| |               | |
+//  | |          | |     \ \  | |       | || |    | |   | |          | |               | |
+//  | |          | |      \ \ | \_______/ || \____/ |   | |_________ | \_________      | |
+//  |_|          |_|       \_\ \_________/  \______/    |___________| \__________|     |_|
+//
+//
+//  The template design by https://github.com/PFei-He/Project-Swift
+//
+//
 //  ___FILENAME___
 //  ___PROJECTNAME___
 //
 //  Created by ___FULLUSERNAME___ on ___DATE___.
 //___COPYRIGHT___
 //
-//  *****  *****
+//  ***** 图表视图控制器 *****
 //
 
 import Builds
@@ -16,10 +29,10 @@ class ___FILEBASENAMEASIDENTIFIER___: ___VARIABLE_cocoaTouchSubclass___ {
     private let req = <#Request#>()
     
     // MARK: - Life Cycle
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         //初始化网络请求
         initRequests([req])
         
@@ -32,26 +45,27 @@ class ___FILEBASENAMEASIDENTIFIER___: ___VARIABLE_cocoaTouchSubclass___ {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     // MARK: - Datas Management
     
     ///参数
     private func params() {
         
     }
-    
+
     // MARK: - UICollectionViewDataSource Methods
 
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 0
     }
 
+
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 0
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath)
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("identifier", forIndexPath: indexPath)
         return cell
     }
 

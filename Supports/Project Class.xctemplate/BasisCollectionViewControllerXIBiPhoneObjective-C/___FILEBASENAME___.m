@@ -1,9 +1,24 @@
 //
+//   __________   __________    _________   ___________  ___________   __________  ___________
+//  |  _______ \ |  _______ \  / _______ \ |______   __||  _________| / _________||____   ____|
+//  | |       \ || |       \ || /       \ |       | |   | |          | /               | |
+//  | |_______/ || |_______/ || |       | |       | |   | |_________ | |               | |
+//  |  ________/ |  _____  _/ | |       | | _     | |   |  _________|| |               | |
+//  | |          | |     \ \  | |       | || |    | |   | |          | |               | |
+//  | |          | |      \ \ | \_______/ || \____/ |   | |_________ | \_________      | |
+//  |_|          |_|       \_\ \_________/  \______/    |___________| \__________|     |_|
+//
+//
+//  The template design by https://github.com/PFei-He/Project-ObjC
+//
+//
 //  ___FILENAME___
 //  ___PROJECTNAME___
 //
 //  Created by ___FULLUSERNAME___ on ___DATE___.
 //___COPYRIGHT___
+//
+//  ***** 图表视图控制器 *****
 //
 
 #import "___FILEBASENAME___.h"
@@ -16,6 +31,8 @@
 @end
 
 @implementation ___FILEBASENAMEASIDENTIFIER___
+
+#pragma mark - Life Cycle
 
 - (void)viewDidLoad
 {
@@ -50,7 +67,6 @@
     return 0;
 }
 
-
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     return 0;
@@ -66,7 +82,7 @@
 
 /*
 // Uncomment this method to specify if the specified item should be highlighted during tracking
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath
+- (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath 
 {
 	return YES;
 }
@@ -74,7 +90,7 @@
 
 /*
 // Uncomment this method to specify if the specified item should be selected
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath
+- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath 
 {
     return YES;
 }
@@ -82,12 +98,12 @@
 
 /*
 // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldShowMenuForItemAtIndexPath:(NSIndexPath *)indexPath
+- (BOOL)collectionView:(UICollectionView *)collectionView shouldShowMenuForItemAtIndexPath:(NSIndexPath *)indexPath 
 {
 	return NO;
 }
 
-- (BOOL)collectionView:(UICollectionView *)collectionView canPerformAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender
+- (BOOL)collectionView:(UICollectionView *)collectionView canPerformAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender 
 {
 	return NO;
 }
