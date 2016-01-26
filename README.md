@@ -87,11 +87,12 @@ override func requestSuccessNotification(notification: NSNotification) {
 }
 ```
 
-#### 文件模板使用（Xcode 7+）
-请将下载到的`Project Class.xctemplate`放置于`~/Library/Developer/Xcode/Templates/File Templates/Source/`文件夹下，如过程中没有此些文件夹，请自行创建。
-
 #### 更多
 更多功能请[下载](https://github.com/PFei-He/Project-Swift/archive/master.zip)查看DEMO
+
+文件模板使用（Xcode 7+）
+---
+请将下载到的`Project Class.xctemplate`放置于`~/Library/Developer/Xcode/Templates/File Templates/Source/`文件夹下，如过程中没有此些文件夹，请自行创建。
 
 许可证
 ---
