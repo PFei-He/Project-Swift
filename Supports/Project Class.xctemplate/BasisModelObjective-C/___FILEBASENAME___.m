@@ -15,7 +15,7 @@
 //  |_|          |_|       \_\ \_________/  \______/    |___________| \__________|     |_|
 //
 //
-//  The template design by https://github.com/PFei-He/Project-ObjC
+//  The framework design by https://github.com/PFei-He/Project-ObjC
 //
 //  ***** 接口 *****
 //

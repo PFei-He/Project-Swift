@@ -1,8 +1,8 @@
 //
-//  Initialization.swift
-//  Project
+//  BuildsVersion.swift
+//  Builds
 //
-//  Created by PFei_He on 16/1/6.
+//  Created by PFei_He on 16/1/26.
 //  Copyright © 2016年 PF-Lib. All rights reserved.
 //
 //   __________   __________    _________   ___________  ___________   __________  ___________
@@ -35,61 +35,20 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 //
-//  ***** 初始化 *****
+//  ***** 版本 *****
 //
 
-import PFSwift
-import Builds
+import Foundation
 
-class Initialization: NSObject {
-    
-    /**
-     初始化登录页
-     - Note: 无
-     - Parameter 无
-     - Returns: 根视图控制器
-     */
-    class func initLaunch() -> UIViewController {
-        if NSUserDefaults.standardUserDefaults().boolForKey("launch") {
-            let tabBarController = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle()).instantiateInitialViewController() as! UITabBarController
-            tabBarController.viewControllers = [UIStoryboard(name: "Home", bundle: NSBundle.mainBundle()).instantiateInitialViewController()!,
-                UIStoryboard(name: "More", bundle: NSBundle.mainBundle()).instantiateInitialViewController()!]
-            return tabBarController
-        } else {
-            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "launch")
-            NSUserDefaults.standardUserDefaults().synchronize()
-            let viewController = UIStoryboard(name: "Guide", bundle: NSBundle.mainBundle()).instantiateInitialViewController()
-            return viewController!
-        }
-    }
+public class BuildsVersion: NSObject {
 
     /**
-     初始化主机地址
-     - Note: 无
-     - Parameter url: 主机地址
-     - Returns: 无
-     */
-    class func initHost(url: String) {
-        BasisRequest.sharedInstance().hostAddress = url
-    }
-    
-    /**
-     初始化接口地址
+     当前版本
      - Note: 无
      - Parameter 无
-     - Returns: 无
+     - Returns: 当前版本
      */
-    class func initApi() {
-        Api.sharedInstance().JSON = PFFile.read(JSON: "api")
-    }
-    
-    /**
-     初始化用户文件
-     - Note: 无
-     - Parameter 无
-     - Returns: 无
-     */
-    class func initUserFile() {
-        PFFile.create("User-Settings.txt")
+    public class func currentVersion() -> String {
+        return "0.0.2"
     }
 }

@@ -15,7 +15,7 @@
 //  |_|          |_|       \_\ \_________/  \______/    |___________| \__________|     |_|
 //
 //
-//  The template design by https://github.com/PFei-He/Project-Swift
+//  The framework design by https://github.com/PFei-He/Project-Swift
 //
 //  ***** 图表视图控制器 *****
 //

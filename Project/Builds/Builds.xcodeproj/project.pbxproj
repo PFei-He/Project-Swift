@@ -14,6 +14,7 @@
 		4578C2851C3E333B00968548 /* BasisTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4578C2841C3E333B00968548 /* BasisTableViewController.swift */; };
 		4578C2871C3E334900968548 /* BasisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4578C2861C3E334900968548 /* BasisViewController.swift */; };
 		458028051C3F5308001F00A9 /* BasisRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458028041C3F5308001F00A9 /* BasisRequest.swift */; };
+		45F33AF41C576A8C002B3926 /* BuildsVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F33AF31C576A8C002B3926 /* BuildsVersion.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		4578C2841C3E333B00968548 /* BasisTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasisTableViewController.swift; sourceTree = "<group>"; };
 		4578C2861C3E334900968548 /* BasisViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasisViewController.swift; sourceTree = "<group>"; };
 		458028041C3F5308001F00A9 /* BasisRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasisRequest.swift; sourceTree = "<group>"; };
+		45F33AF31C576A8C002B3926 /* BuildsVersion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildsVersion.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				4578C25D1C3E0F8900968548 /* DebugMode.swift */,
+				45F33AF31C576A8C002B3926 /* BuildsVersion.swift */,
 			);
 			name = Debug;
 			path = Framework/Debug;
@@ -204,6 +207,7 @@
 				458028051C3F5308001F00A9 /* BasisRequest.swift in Sources */,
 				4578C25E1C3E0F8900968548 /* DebugMode.swift in Sources */,
 				4578C2871C3E334900968548 /* BasisViewController.swift in Sources */,
+				45F33AF41C576A8C002B3926 /* BuildsVersion.swift in Sources */,
 				456E60361C47428300F1ADD9 /* BasisCollectionViewController.swift in Sources */,
 				4578C2851C3E333B00968548 /* BasisTableViewController.swift in Sources */,
 			);
