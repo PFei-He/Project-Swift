@@ -1,4 +1,10 @@
 //
+//  ___FILENAME___
+//  ___PROJECTNAME___
+//
+//  Created by ___FULLUSERNAME___ on ___DATE___.
+//___COPYRIGHT___
+//
 //   __________   __________    _________   ___________  ___________   __________  ___________
 //  |  _______ \ |  _______ \  / _______ \ |______   __||  _________| / _________||____   ____|
 //  | |       \ || |       \ || /       \ |       | |   | |          | /               | |
@@ -10,13 +16,6 @@
 //
 //
 //  The template design by https://github.com/PFei-He/Project-Swift
-//
-//
-//  ___FILENAME___
-//  ___PROJECTNAME___
-//
-//  Created by ___FULLUSERNAME___ on ___DATE___.
-//___COPYRIGHT___
 //
 //  ***** 图表视图控制器 *****
 //
