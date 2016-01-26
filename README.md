@@ -94,6 +94,8 @@ override func requestSuccessNotification(notification: NSNotification) {
 ---
 请将下载到的`Project Class.xctemplate`放置于`~/Library/Developer/Xcode/Templates/File Templates/Source/`文件夹下，如过程中没有此些文件夹，请自行创建。
 
+![Screenshot](https://github.com/PFei-He/Project-Swift/blob/master/Supports/Screenshot.png)
+
 许可证
 ---
 `Project`使用 MIT 许可证，详情见 [LICENSE](https://raw.githubusercontent.com/PFei-He/Project-Swift/master/LICENSE) 文件。
