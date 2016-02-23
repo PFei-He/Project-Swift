@@ -20,7 +20,6 @@
 		458884E61C45DDBD002FE9FF /* MoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458884E51C45DDBD002FE9FF /* MoreModel.swift */; };
 		458884E81C45DDC1002FE9FF /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458884E71C45DDC1002FE9FF /* WeatherModel.swift */; };
 		458884EE1C45DDF4002FE9FF /* GuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458884ED1C45DDF4002FE9FF /* GuideViewController.swift */; };
-		458884F11C45DE03002FE9FF /* CityListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458884EF1C45DE03002FE9FF /* CityListViewController.swift */; };
 		458884F21C45DE03002FE9FF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458884F01C45DE03002FE9FF /* HomeViewController.swift */; };
 		458884F41C45DE09002FE9FF /* MoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458884F31C45DE09002FE9FF /* MoreTableViewController.swift */; };
 		458884FC1C45DEFE002FE9FF /* Project.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 458884F71C45DEFE002FE9FF /* Project.xcdatamodeld */; };
@@ -32,6 +31,7 @@
 		458885091C45DF4A002FE9FF /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458885031C45DF4A002FE9FF /* UserSettings.swift */; };
 		458886B11C461EC7002FE9FF /* More.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 458886AF1C461EC7002FE9FF /* More.storyboard */; };
 		458886B41C461ED5002FE9FF /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 458886B21C461ED5002FE9FF /* Home.storyboard */; };
+		45CF948B1C7BFA8100EB8990 /* CityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CF948A1C7BFA8100EB8990 /* CityTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,7 +72,6 @@
 		458884E51C45DDBD002FE9FF /* MoreModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MoreModel.swift; path = Model/MoreModel.swift; sourceTree = "<group>"; };
 		458884E71C45DDC1002FE9FF /* WeatherModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeatherModel.swift; path = Model/WeatherModel.swift; sourceTree = "<group>"; };
 		458884ED1C45DDF4002FE9FF /* GuideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GuideViewController.swift; path = ViewModel/GuideViewController.swift; sourceTree = "<group>"; };
-		458884EF1C45DE03002FE9FF /* CityListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CityListViewController.swift; path = ViewModel/CityListViewController.swift; sourceTree = "<group>"; };
 		458884F01C45DE03002FE9FF /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = ViewModel/HomeViewController.swift; sourceTree = "<group>"; };
 		458884F31C45DE09002FE9FF /* MoreTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MoreTableViewController.swift; path = ViewModel/MoreTableViewController.swift; sourceTree = "<group>"; };
 		458884F81C45DEFE002FE9FF /* Project.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Project.xcdatamodel; sourceTree = "<group>"; };
@@ -84,6 +83,7 @@
 		458885031C45DF4A002FE9FF /* UserSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		458886B01C461EC7002FE9FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/More.storyboard; sourceTree = "<group>"; };
 		458886B31C461ED5002FE9FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Home.storyboard; sourceTree = "<group>"; };
+		45CF948A1C7BFA8100EB8990 /* CityTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CityTableViewController.swift; path = ViewModel/CityTableViewController.swift; sourceTree = "<group>"; };
 		B0EDCFCE83F6B4F2E4CFCFFF /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -257,7 +257,7 @@
 		458884DF1C45DD8D002FE9FF /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				458884EF1C45DE03002FE9FF /* CityListViewController.swift */,
+				45CF948A1C7BFA8100EB8990 /* CityTableViewController.swift */,
 				458884F01C45DE03002FE9FF /* HomeViewController.swift */,
 			);
 			name = ViewModel;
@@ -591,8 +591,8 @@
 				458884F41C45DE09002FE9FF /* MoreTableViewController.swift in Sources */,
 				458884F21C45DE03002FE9FF /* HomeViewController.swift in Sources */,
 				458885091C45DF4A002FE9FF /* UserSettings.swift in Sources */,
+				45CF948B1C7BFA8100EB8990 /* CityTableViewController.swift in Sources */,
 				458884FE1C45DEFE002FE9FF /* Weatherinfo.swift in Sources */,
-				458884F11C45DE03002FE9FF /* CityListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

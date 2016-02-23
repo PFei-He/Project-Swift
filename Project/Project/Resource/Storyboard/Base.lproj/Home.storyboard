@@ -104,10 +104,10 @@
             </objects>
             <point key="canvasLocation" x="-819" y="-479"/>
         </scene>
-        <!--City List View Controller-->
+        <!--City Table View Controller-->
         <scene sceneID="wwQ-D2-pYT">
             <objects>
-                <tableViewController id="EcS-Hj-UPE" customClass="CityListViewController" customModule="Project" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="EcS-Hj-UPE" customClass="CityTableViewController" customModule="Project" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="BU4-Qd-gzW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

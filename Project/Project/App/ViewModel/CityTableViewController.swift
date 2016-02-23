@@ -1,8 +1,8 @@
 //
-//  CityListViewController.swift
+//  CityTableViewController.swift
 //  Project
 //
-//  Created by PFei_He on 16/1/11.
+//  Created by PFei_He on 16/2/23.
 //  Copyright © 2016年 PF-Lib. All rights reserved.
 //
 //   __________   __________    _________   ___________  ___________   __________  ___________
@@ -40,8 +40,8 @@
 
 import Builds
 
-class CityListViewController: BasisTableViewController {
-
+class CityTableViewController: BasisTableViewController  {
+    
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
@@ -67,7 +67,7 @@ class CityListViewController: BasisTableViewController {
     }
     
     // MARK: - UITableViewDelegate Methods
-
+    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         UserSettings.setUserSettings(["api": Api.sharedInstance().api[indexPath.row]])
         navigationController?.popViewControllerAnimated(true)
