@@ -124,7 +124,7 @@ public class BasisTableViewController: UITableViewController {
     
     /**
      请求即将开始
-     - Note: 无
+     - Note: 此方法已实现提示框的处理，如需自定义，请自行重写此方法
      - Parameter notification: 请求返回的通知对象
      - Returns: 无
      */
@@ -139,7 +139,7 @@ public class BasisTableViewController: UITableViewController {
     
     /**
      请求已经结束
-     - Note: 无
+     - Note: 此方法已实现提示框的处理，如需自定义，请自行重写此方法
      - Parameter notification: 请求返回的通知对象
      - Returns: 无
      */
