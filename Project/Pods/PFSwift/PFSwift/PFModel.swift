@@ -7,7 +7,7 @@
 //
 //  https://github.com/PFei-He/PFSwift
 //
-//  vesion: 0.2.3
+//  vesion: 0.4.0
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -88,36 +88,38 @@ public class PFModel: NSObject, NSXMLParserDelegate {
     // MARK: - Private Methods
     
     ///解析JSON
-    private func parseJSON(var JSON: AnyObject?) {
-        if JSON != nil {
+    private func parseJSON(JSON: AnyObject?) {
+        var json = JSON
+        if json != nil {
             //判断数据类型
-            if JSON is Dictionary<String, AnyObject> == false && JSON is NSData == false {
+            if json is Dictionary<String, AnyObject> == false && json is NSData == false {
                 print("The JSON object must be type of dictionary or data")
                 return;
-            } else if JSON is NSData {
-                JSON = try? NSJSONSerialization.JSONObjectWithData(JSON as! NSData, options: .AllowFragments)
+            } else if json is NSData {
+                json = try? NSJSONSerialization.JSONObjectWithData(json as! NSData, options: .AllowFragments)
             }
             //将键值设置为属性（解析JSON）
-            setValuesForKeysWithDictionary(JSON as! Dictionary<String, AnyObject>)
+            setValuesForKeysWithDictionary(json as! Dictionary<String, AnyObject>)
         }
     }
     
     ///解析XML
-    private func parseXML(var XML: AnyObject?) {
-        if XML != nil {
+    private func parseXML(XML: AnyObject?) {
+        var xml = XML
+        if xml != nil {
             //节点
             array.addObject(NSMutableDictionary())
             
             //判断数据类型
-            if XML is String == false && XML is NSData == false {
+            if xml is String == false && xml is NSData == false {
                 NSLog("The XML object must be type of string or data");
                 return;
-            } else if XML is String {
-                XML = XML!.dataUsingEncoding(NSUTF8StringEncoding)
+            } else if xml is String {
+                xml = xml!.dataUsingEncoding(NSUTF8StringEncoding)
             }
             
             //XML解析器
-            let parser = NSXMLParser(data: XML as! NSData)
+            let parser = NSXMLParser(data: xml as! NSData)
             parser.delegate = self
             if parser.parse() {//解析XML
                 self.JSON = array[0]

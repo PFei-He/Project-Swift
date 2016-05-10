@@ -2,27 +2,14 @@
 //  AppDelegate.swift
 //  Project
 //
-//  Created by PFei_He on 16/1/5.
-//  Copyright © 2016年 PF-Lib. All rights reserved.
-//
-//   __________   __________    _________   ___________  ___________   __________  ___________
-//  |  _______ \ |  _______ \  / _______ \ |______   __||  _________| / _________||____   ____|
-//  | |       \ || |       \ || /       \ |       | |   | |          | /               | |
-//  | |_______/ || |_______/ || |       | |       | |   | |_________ | |               | |
-//  |  ________/ |  _____  _/ | |       | | _     | |   |  _________|| |               | |
-//  | |          | |     \ \  | |       | || |    | |   | |          | |               | |
-//  | |          | |      \ \ | \_______/ || \____/ |   | |_________ | \_________      | |
-//  |_|          |_|       \_\ \_________/  \______/    |___________| \__________|     |_|
-//
-//
-//  https://github.com/PFei-He/Project-Swift
+//  Created by PFei_He on 16/5/10.
+//  Copyright © 2016年 PFei_He. All rights reserved.
 //
 //  ***** AppDelegate *****
 //
 
 import UIKit
 import CoreData
-import Builds
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -31,7 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
         
         //打开调试模式
 //        DebugMode.open(true)
@@ -89,7 +75,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // The persistent store coordinator for the application. This implementation creates and returns a coordinator, having added the store for the application to it. This property is optional since there are legitimate error conditions that could cause the creation of the store to fail.
         // Create the coordinator and store
         let coordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
-        let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent("Project.sqlite")
+        let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent("SingleViewCoreData.sqlite")
         var failureReason = "There was an error creating or loading the application's saved data."
         do {
             try coordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: nil)
@@ -106,6 +92,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             NSLog("Unresolved error \(wrappedError), \(wrappedError.userInfo)")
             abort()
         }
+        
         return coordinator
     }()
 
@@ -132,4 +119,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+
 }
+
