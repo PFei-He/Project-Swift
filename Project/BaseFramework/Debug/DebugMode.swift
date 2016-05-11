@@ -54,4 +54,14 @@ public class DebugMode: NSObject {
         BaseTableViewController.setDebugMode(debugOrNot)
         BaseViewController.setDebugMode(debugOrNot)
     }
+    
+    /**
+     版本号
+     - Note: 无
+     - Parameter 无
+     - Returns: 版本号
+     */
+    func version() -> String {
+        return "[ Base Framework ] current version: 0.0.4"
+    }
 }

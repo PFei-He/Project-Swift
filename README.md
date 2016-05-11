@@ -9,7 +9,7 @@
 
 版本
 ---
-0.0.2
+0.0.4
 
 说明
 ---
@@ -29,7 +29,7 @@
 * Project - 工程目录，项目开发的目录。开发者在本层进行开发工作。
 
 #### 关于CocoaPods
-本项目并未使用CocoaPods进行版本管理，后续会考虑加入。
+本项目不接入CocoaPods。
 
 #### 关于Objective-C
 为方便开发者使用，本框架另提供了Objective-C版本。[点我跳转](https://github.com/PFei-He/Project-ObjC)至`Project-ObjC`

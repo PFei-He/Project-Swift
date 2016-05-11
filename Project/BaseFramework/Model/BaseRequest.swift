@@ -137,10 +137,10 @@ public class BaseRequest: PFModel {
      - Returns: 无
      */
     public func addRequester(requester: AnyObject) {
-        NSNotificationCenter.defaultCenter().addObserver(requester, selector: "requestWillStartNotification:", name: String(classForCoder)+"WillStart", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(requester, selector: "requestWasEndedNotification:", name: String(classForCoder)+"WasEnded", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(requester, selector: "requestSuccessNotification:", name: String(classForCoder)+"Success", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(requester, selector: "requestFailedNotification:", name: String(classForCoder)+"Failed", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(requester, selector: NSSelectorFromString("requestWillStartNotification:"), name: String(classForCoder)+"WillStart", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(requester, selector: NSSelectorFromString("requestWasEndedNotification:"), name: String(classForCoder)+"WasEnded", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(requester, selector: NSSelectorFromString("requestSuccessNotification:"), name: String(classForCoder)+"Success", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(requester, selector: NSSelectorFromString("requestFailedNotification:"), name: String(classForCoder)+"Failed", object: nil)
     }
     
     /**

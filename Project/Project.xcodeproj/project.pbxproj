@@ -150,8 +150,8 @@
 				452045491CE16F2A00924452 /* App */,
 				4520454C1CE16F3600924452 /* Base */,
 				4520454E1CE16F9000924452 /* Resourse */,
-				452045601CE16FAC00924452 /* Vendor */,
 				45111E8A1CE16A7B00EB417E /* Info.plist */,
+				452045601CE16FAC00924452 /* Vendor */,
 			);
 			path = Project;
 			sourceTree = "<group>";
