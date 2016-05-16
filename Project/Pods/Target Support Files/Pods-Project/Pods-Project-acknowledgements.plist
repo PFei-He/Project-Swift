@@ -43,7 +43,7 @@ THE SOFTWARE.
 			<key>FooterText</key>
 			<string>The MIT License (MIT)
 
-Copyright &#169; 2015 &lt;PF-Lib&gt; (https://github.com/PFei-He)
+Copyright &#169; 2016 &lt;PF-Lib&gt; (https://github.com/PFei-He)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
 documentation files (the &#8220;Software&#8221;), to deal in the Software without restriction, including without limitation the
@@ -59,7 +59,7 @@ COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER I
 OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 </string>
 			<key>Title</key>
-			<string>PFSwift</string>
+			<string>PFKitSwift</string>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 		</dict>

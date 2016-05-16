@@ -38,7 +38,7 @@
 //  ***** 用户设置 *****
 //
 
-import PFSwift
+import PFKitSwift
 
 class UserSettings: BaseModel {
 
@@ -47,7 +47,7 @@ class UserSettings: BaseModel {
     //初始化
     override init() {
         super.init()
-        JSON = PFFile.readDictionaryWithName("User-Settings.txt")
+        JSON = File.readDictionaryWithName("User-Settings.txt")
     }
     
     /**
@@ -57,6 +57,6 @@ class UserSettings: BaseModel {
      - Returns: 保存结果
      */
     class func setUserSettings(settings: Dictionary<String, AnyObject>) -> Bool {
-        return PFFile.modifyWithName("User-Settings.txt", setParams: settings)
+        return File.modifyWithName("User-Settings.txt", setParams: settings)
     }
 }

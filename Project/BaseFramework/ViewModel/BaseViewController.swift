@@ -39,11 +39,11 @@
 //
 
 import UIKit
-import PFSwift
+import PFKitSwift
 import SVProgressHUD
 
 ///调试模式
-private var debugMode = false
+private var DEBUG_MODE = false
 
 public class BaseViewController: UIViewController {
 
@@ -107,7 +107,7 @@ public class BaseViewController: UIViewController {
      - Parameter requests: 所有的请求
      - Returns: 无
      */
-//    public func removeRequests(requests: Array<BasisRequest>) {
+//    public func removeRequests(requests: Array<BaseRequest>) {
 //        for request in requests {
 //            request.removeRequester(self)
 //        }
@@ -132,8 +132,9 @@ public class BaseViewController: UIViewController {
         //显示提示框
         SVProgressHUD.showWithStatus("加载中")
         
-        if debugMode {
-            print("[ "+String(classForCoder)+" ]"+" request will start with sender: \(notification.object!)")
+        if DEBUG_MODE {
+            print("[ PROJECT ][ DEBUG ] Request will start with sender: \(notification.object!).")
+            print("[ PROJECT ][ DEBUG ] Requester: \(String(classForCoder)).")
         }
     }
     
@@ -152,8 +153,8 @@ public class BaseViewController: UIViewController {
             SVProgressHUD.showErrorWithStatus("请求失败")
         }
         
-        if debugMode {
-            print("[ "+String(classForCoder)+" ]"+" request was ended with sender: \(notification.object!)")
+        if DEBUG_MODE {
+            print("[ PROJECT ][ DEBUG ] Request was ended with sender: \(notification.object!).")
         }
     }
     
@@ -169,8 +170,8 @@ public class BaseViewController: UIViewController {
         _sender             = notification.userInfo?["sender"]
         _requestSuccess     = true
         
-        if debugMode {
-            print("[ "+String(_sender!.classForCoder)+" ]"+" request result: \(notification.object!)")
+        if DEBUG_MODE {
+            print("[ PROJECT ][ DEBUG ] Request success with result: \(notification.object!).")
         }
     }
     
@@ -186,8 +187,8 @@ public class BaseViewController: UIViewController {
         _sender             = notification.userInfo?["sender"]
         _requestSuccess     = false
         
-        if debugMode {
-            print("[ "+String(_sender!.classForCoder)+" ]"+" request result: \(notification.object!)")
+        if DEBUG_MODE {
+            print("[ PROJECT ][ DEBUG ] Request failed with result: \(notification.object!).")
         }
     }
     
@@ -196,11 +197,11 @@ public class BaseViewController: UIViewController {
     /**
      调试模式
      - Note: 无
-     - Parameter true 或 false
+     - Parameter debugOrNot: 是否打开调试模式
      - Returns: 无
      */
-    public class func setDebugMode(debugOrNot: Bool) {
-        debugMode = debugOrNot
+    public class func debugMode(debugOrNot: Bool) {
+        DEBUG_MODE = debugOrNot
     }
 }
 

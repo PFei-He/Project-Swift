@@ -195,8 +195,8 @@
 		452045471CE16F0100924452 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				452045631CE1764D00924452 /* BaseRequest.swift */,
 				4520456B1CE1799C00924452 /* BaseModel.swift */,
+				452045631CE1764D00924452 /* BaseRequest.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";

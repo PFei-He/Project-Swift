@@ -38,7 +38,7 @@
 //  ***** 初始化 *****
 //
 
-import PFSwift
+import PFKitSwift
 
 class Initialization: NSObject {
 
@@ -79,7 +79,7 @@ class Initialization: NSObject {
      - Returns: 无
      */
     class func initApi() {
-        Api.sharedInstance().JSON = PFFile.readJSONWithName("api")
+        Api.sharedInstance().JSON = File.readJSONWithName("api")
     }
     
     /**
@@ -89,6 +89,6 @@ class Initialization: NSObject {
      - Returns: 无
      */
     class func initUserFile() {
-        PFFile.createWithName("User-Settings.txt")
+        File.createWithName("User-Settings.txt")
     }
 }

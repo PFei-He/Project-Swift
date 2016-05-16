@@ -1,18 +1,18 @@
 PODS:
   - Alamofire (3.4.0)
-  - PFSwift (0.4.0)
+  - PFKitSwift (0.0.6)
   - SVProgressHUD (1.1.3)
 
 DEPENDENCIES:
   - Alamofire (~> 3.0)
-  - PFSwift (~> 0.4)
+  - PFKitSwift (~> 0.0.6)
   - SVProgressHUD (~> 1.0)
 
 SPEC CHECKSUMS:
   Alamofire: c19a627cefd6a95f840401c49ab1f124e07f54ee
-  PFSwift: 16aea3b2e2be6b5eb74fe44763a8987473cbaa51
+  PFKitSwift: c46ca97ecf7e894b08cf3fcb490db39d5120c539
   SVProgressHUD: 748080e4f36e603f6c02aec292664239df5279c1
 
-PODFILE CHECKSUM: f99cdaf71d91fd9a6f0da18c935bce2797b80927
+PODFILE CHECKSUM: 3e7d6b11cdb54dac951cb588e917fa7aa4aae901
 
-COCOAPODS: 1.0.0.rc.2
+COCOAPODS: 1.0.0

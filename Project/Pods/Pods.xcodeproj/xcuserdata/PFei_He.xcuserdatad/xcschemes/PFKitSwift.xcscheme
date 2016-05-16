@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '86B13488B92F961F31DAFF6112A05D3D'
-               BlueprintName = 'PFSwift'
+               BlueprintIdentifier = '08BC27DF27203BD3DC6CB409ADC620F1'
+               BlueprintName = 'PFKitSwift'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'PFSwift.framework'>
+               BuildableName = 'PFKitSwift.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

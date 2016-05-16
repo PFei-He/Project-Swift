@@ -1,13 +1,11 @@
 //
-//  PFModel.swift
-//  PFSwift
+//  Model.swift
+//  PFKit
 //
-//  Created by PFei_He on 15/11/17.
-//  Copyright © 2015年 PF-Lib. All rights reserved.
+//  Created by PFei_He on 16/5/12.
+//  Copyright © 2016年 PFei_He. All rights reserved.
 //
-//  https://github.com/PFei-He/PFSwift
-//
-//  vesion: 0.4.0
+//  https://github.com/PFei-He/PFKitSwift
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -32,13 +30,18 @@
 
 import Foundation
 
-public class PFModel: NSObject, NSXMLParserDelegate {
+///调试模式
+private var DEBUG_MODE = false
+///调试目标
+private var DEBUG_TARGET = ""
+
+public class Model: NSObject, NSXMLParserDelegate {
     
     ///节点
     private var array = NSMutableArray()
     ///节点中的值
     private var string = NSMutableString()
-
+    
     ///JSON数据
     public var JSON: AnyObject {
         get {
@@ -93,8 +96,11 @@ public class PFModel: NSObject, NSXMLParserDelegate {
         if json != nil {
             //判断数据类型
             if json is Dictionary<String, AnyObject> == false && json is NSData == false {
-                print("The JSON object must be type of dictionary or data")
-                return;
+                if DEBUG_MODE {
+                    print("[ \(DEBUG_TARGET) ][ ERROR ] The JSON object must be type of dictionary or data.")
+                    print("[ \(DEBUG_TARGET) ][ ERROR ] Class: \(String(classForCoder)).")
+                }
+                return
             } else if json is NSData {
                 json = try? NSJSONSerialization.JSONObjectWithData(json as! NSData, options: .AllowFragments)
             }
@@ -112,8 +118,11 @@ public class PFModel: NSObject, NSXMLParserDelegate {
             
             //判断数据类型
             if xml is String == false && xml is NSData == false {
-                NSLog("The XML object must be type of string or data");
-                return;
+                if DEBUG_MODE {
+                    print("[ \(DEBUG_TARGET) ][ ERROR ] The XML object must be type of string or data.")
+                    print("[ \(DEBUG_TARGET) ][ ERROR ] Class: \(String(classForCoder)).")
+                }
+                return
             } else if xml is String {
                 xml = xml!.dataUsingEncoding(NSUTF8StringEncoding)
             }
@@ -123,8 +132,9 @@ public class PFModel: NSObject, NSXMLParserDelegate {
             parser.delegate = self
             if parser.parse() {//解析XML
                 self.JSON = array[0]
-            } else {
-                print("XML data can't be parse");
+            } else if DEBUG_MODE {
+                print("[ \(DEBUG_TARGET) ][ ERROR ] XML data can't be parse.")
+                print("[ \(DEBUG_TARGET) ][ ERROR ] Class: \(String(classForCoder)).")
             }
         }
     }
@@ -137,9 +147,15 @@ public class PFModel: NSObject, NSXMLParserDelegate {
      - Parameter value: 值
      - Parameter key: 键
      - Returns: 无
-    */
+     */
     override public func setValue(value: AnyObject?, forUndefinedKey key: String) {
-        print("***Class->"+String(classForCoder), "UndefinedKey->"+key, "Type->"+String(value?.classForCoder), "Value->"+String(value)+"***")
+        if DEBUG_MODE {
+            print("[ \(DEBUG_TARGET) ][ ERROR ] Found undefined key when parsing.")
+            print("[ \(DEBUG_TARGET) ][ ERROR ] Class: \(String(classForCoder)).")
+            print("[ \(DEBUG_TARGET) ][ ERROR ] Key: \(key).")
+            print("[ \(DEBUG_TARGET) ][ ERROR ] Type: \(String(value?.classForCoder)).")
+            print("[ \(DEBUG_TARGET) ][ ERROR ] Value: \(String(value)).")
+        }
     }
     
     /**
@@ -157,7 +173,7 @@ public class PFModel: NSObject, NSXMLParserDelegate {
             for i in 0...(Int(count) - 1) {
                 //获取属性名
                 let key = String(UTF8String: property_getName(list[i]))
-
+                
                 //将属性放入到数组中
                 if key != nil {
                     array.append(key!)
@@ -181,7 +197,19 @@ public class PFModel: NSObject, NSXMLParserDelegate {
         //返回JSON对象
         return JSON
     }
-
+    
+    /**
+     调试模式
+     - Note: 无
+     - Parameter openOrNot: 是否打开调试模式
+     - Parameter target: 调试目标
+     - Returns: 无
+     */
+    public class func debugMode(openOrNot: Bool, debugTarget terget: String) {
+        DEBUG_MODE = openOrNot
+        DEBUG_TARGET = terget
+    }
+    
     // MARK: - NSXMLParserDelegate Methods
     
     /**

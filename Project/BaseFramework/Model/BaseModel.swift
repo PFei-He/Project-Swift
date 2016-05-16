@@ -38,8 +38,8 @@
 //  ***** 基础数据模型 *****
 //
 
-import PFSwift
+import PFKitSwift
 
-public class BaseModel: PFModel {
+public class BaseModel: Model {
 
 }

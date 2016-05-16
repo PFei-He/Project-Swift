@@ -38,13 +38,13 @@
 //  ***** 基础请求处理 *****
 //
 
-import PFSwift
+import PFKitSwift
 import Alamofire
 
 ///调试模式
-private var debugMode = false
+private var DEBUG_MODE = false
 
-public class BaseRequest: PFModel {
+public class BaseRequest: Model {
 
     ///主机地址
     public var hostAddress:  String!
@@ -55,11 +55,11 @@ public class BaseRequest: PFModel {
     /**
      调试模式
      - Note: 无
-     - Parameter true 或 false
+     - Parameter debugOrNot: 是否打开调试模式
      - Returns: 无
      */
-    public class func setDebugMode(debugOrNot: Bool) {
-        debugMode = debugOrNot
+    public class func debugMode(debugOrNot: Bool) {
+        DEBUG_MODE = debugOrNot
     }
     
     /**
@@ -70,10 +70,10 @@ public class BaseRequest: PFModel {
      */
     public class func sharedInstance() -> BaseRequest {
         struct singleton{
-            static var BasisRequest_onceToken: dispatch_once_t = 0
+            static var BaseRequest_onceToken: dispatch_once_t = 0
             static var instance: BaseRequest? = nil
         }
-        dispatch_once(&singleton.BasisRequest_onceToken) { () -> Void in
+        dispatch_once(&singleton.BaseRequest_onceToken) { () -> Void in
             singleton.instance = BaseRequest()
         }
         return singleton.instance!
@@ -110,10 +110,10 @@ public class BaseRequest: PFModel {
      */
     public func sendWithAPI(api: String, params: Dictionary<String, AnyObject>, results: (JSON: AnyObject?) -> Void) {
         
-        if debugMode {
-            print("[ "+String(classForCoder)+" ]"+" request url: "+BaseRequest.sharedInstance().hostAddress+api)
+        if DEBUG_MODE {
+            print("[ RPOJECT ][ DEBUG ] Request url: \(BaseRequest.sharedInstance().hostAddress+api).")
             if !params.isEmpty {
-                print("[ "+String(classForCoder)+" ]"+" request params: "+String(params))
+                print("[ PROJECT ][ DEBUG ] Request params: \(String(params)).")
             }
         }
         
@@ -122,8 +122,8 @@ public class BaseRequest: PFModel {
             if response.result.value != nil && response.result.value is Dictionary<String, AnyObject> {//请求成功
                 results(JSON: response.result.value)
             } else {
-                if debugMode {
-                    print("[ "+String(self.classForCoder)+" ]"+" request error: \(response.result.error)")
+                if DEBUG_MODE {
+                    print("[ PROJECT ][ DEBUG ] Request error: \(response.result.error).")
                 }
                 results(JSON: nil)
             }

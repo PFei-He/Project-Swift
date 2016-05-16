@@ -1,13 +1,11 @@
 //
-//  PFTimer.swift
-//  PFSwift
+//  Debug.swift
+//  PFKit
 //
-//  Created by PFei_He on 15/11/24.
-//  Copyright © 2015年 PF-Lib. All rights reserved.
+//  Created by PFei_He on 16/5/12.
+//  Copyright © 2016年 PFei_He. All rights reserved.
 //
-//  https://github.com/PFei-He/PFSwift
-//
-//  vesion: 0.4.0
+//  https://github.com/PFei-He/PFKitSwift
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -27,52 +25,47 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 //
-//  ***** NSTimer扩展 *****
+//  ***** 调试 *****
 //
 
 import Foundation
 
-extension NSTimer {
-    
+public class Debug: NSObject {
+
     /**
-     暂停计时器
+     版本信息
      - Note: 无
      - Parameter 无
      - Returns: 无
      */
-    public func pause() {
-        if !valid {//若计时器无效则返回
-            return;
-        }
-        //设置计时器运行时间为未来时间，则暂停了计时器
-        fireDate = NSDate.distantFuture()
+    public class func debugVersion() {
+        print("[ PFKit ][ INFO ] THANK YOU FOR USING !!")
+        print("[ PFKit ][ INFO ] Current version: 0.0.6.")
+        print("[ PFKit ][ INFO ] Programming language: Swift.")
+        print("[ PFKit ][ INFO ] Open source license: MIT.")
+        print("[ PFKit ][ INFO ] Join me: https://github.com/PFei-He/PFKitSwift.")
     }
     
     /**
-     恢复计时器
+     调试模式
      - Note: 无
-     - Parameter 无
+     - Parameter openOrNot: 是否打开调试模式
      - Returns: 无
      */
-    public func resume() {
-        if !valid {//若计时器无效则返回
-            return;
-        }
-        //设置计时器运行时间为当前时间，则立即运行计时器
-        fireDate = NSDate()
+    public class func debugMode(openOrNot: Bool) {
+        File.debugMode(openOrNot, debugTarget: "PFKit")
+        Model.debugMode(openOrNot, debugTarget: "PFKit")
     }
     
     /**
-     指定时间间隔后恢复计时器
+     调试模式
      - Note: 无
-     - Parameter timeInterval: 时间间隔
+     - Parameter openOrNot: 是否打开调试模式
+     - Parameter target: 调试目标
      - Returns: 无
      */
-    public func resumeAfterTimeInterval(timeInterval: NSTimeInterval) {
-        if !valid {//若计时器无效则返回
-            return;
-        }
-        //设置计时器运行时间为指定的间隔时长
-        fireDate = NSDate(timeIntervalSinceNow: timeInterval)
+    public class func debugMode(openOrNot: Bool, debugTarget target: String) {
+        File.debugMode(openOrNot, debugTarget: target)
+        Model.debugMode(openOrNot, debugTarget: target)
     }
 }

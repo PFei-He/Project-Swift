@@ -1,13 +1,11 @@
 //
-//  PFFile.swift
-//  PFSwift
+//  File.swift
+//  PFKit
 //
-//  Created by PFei_He on 15/11/17.
-//  Copyright © 2015年 PF-Lib. All rights reserved.
+//  Created by PFei_He on 16/5/12.
+//  Copyright © 2016年 PFei_He. All rights reserved.
 //
-//  https://github.com/PFei-He/PFSwift
-//
-//  vesion: 0.4.0
+//  https://github.com/PFei-He/PFKitSwift
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -32,8 +30,15 @@
 
 import Foundation
 
-public class PFFile: NSObject {
-    
+///调试模式
+private var DEBUG_MODE = false
+///调试目标
+private var DEBUG_TARGET = ""
+
+public class File: NSObject {
+
+    // MARK: - Public Methods
+
     /**
      创建文件
      - Note: 文件存放于沙盒中的Documents文件夹中
@@ -44,8 +49,17 @@ public class PFFile: NSObject {
         let path = readWithName(fileName, directory: "document", type: nil) as! String
         let manager = NSFileManager.defaultManager()
         if !manager.fileExistsAtPath(path) {//如果文件不存在则创建文件
-            manager.createFileAtPath(path, contents:nil, attributes:nil)
+            let result = manager.createFileAtPath(path, contents:nil, attributes:nil)
             modifyWithName(fileName, setParams: Dictionary<String, AnyObject>())
+            if result && DEBUG_MODE {
+                print("[ \(DEBUG_TARGET) ][ DEBUG ] File created.")
+                print("[ \(DEBUG_TARGET) ][ DEBUG ] File path: \(path).")
+            } else if DEBUG_MODE {
+                print("[ \(DEBUG_TARGET) ][ ERROR ] File create failed.")
+            }
+        } else if DEBUG_MODE {
+            print("[ \(DEBUG_TARGET) ][ ERROR ] File exists.")
+            print("[ \(DEBUG_TARGET) ][ DEBUG ] File path: \(path).")
         }
     }
     
@@ -60,8 +74,17 @@ public class PFFile: NSObject {
         let path = readWithName(fileName, directory: "document", type: nil) as! String
         let manager = NSFileManager.defaultManager()
         if !manager.fileExistsAtPath(path) {//如果文件不存在则创建文件
-            manager.createFileAtPath(path, contents:nil, attributes:nil)
+            let result = manager.createFileAtPath(path, contents:nil, attributes:nil)
             modifyWithName(fileName, setParams: params)
+            if result && DEBUG_MODE {
+                print("[ \(DEBUG_TARGET) ][ DEBUG ] File created.")
+                print("[ \(DEBUG_TARGET) ][ DEBUG ] File path: \(path).")
+            } else if DEBUG_MODE {
+                print("[ \(DEBUG_TARGET) ][ ERROR ] File create failed.")
+            }
+        } else if DEBUG_MODE {
+            print("[ \(DEBUG_TARGET) ][ ERROR ] File exists.")
+            print("[ \(DEBUG_TARGET) ][ DEBUG ] File path: \(path).")
         }
     }
     
@@ -72,9 +95,19 @@ public class PFFile: NSObject {
      - Returns: 文件中的数据
      */
     public class func readDictionaryWithName(fileName: String) -> Dictionary<String, AnyObject> {
-        var dictionary = NSDictionary(contentsOfFile: readWithName(fileName, directory: "document", type: nil) as! String) as! Dictionary<String, AnyObject>
-        dictionary.removeValueForKey("")
-        return dictionary
+        let string = readWithName(fileName, directory: "document", type: nil) as! String
+        let dictionary = Dictionary<String, AnyObject>()
+        if string != "" {
+            var dictionary = NSDictionary(contentsOfFile: string) as! Dictionary<String, AnyObject>
+            dictionary.removeValueForKey("")
+            return dictionary
+        } else {
+            if DEBUG_MODE {
+                print("[ \(DEBUG_TARGET) ][ DEBUG ] Dictionary file has not parameter.")
+                print("[ \(DEBUG_TARGET) ][ ERROR ] Read dictionary file failed.")
+            }
+            return dictionary
+        }
     }
     
     /**
@@ -86,7 +119,16 @@ public class PFFile: NSObject {
     public class func readStringWithName(fileName: String) -> String {
         var dictionary = NSDictionary(contentsOfFile: readWithName(fileName, directory: "document", type: nil) as! String) as! Dictionary<String, AnyObject>
         dictionary.removeValueForKey("")
-        return try! String(contentsOfFile: readWithName(fileName, directory: "document", type: nil) as! String, encoding: NSUTF8StringEncoding)
+        var result = String()
+        do {
+            result = try String(contentsOfFile: readWithName(fileName, directory: "document", type: nil) as! String, encoding: NSUTF8StringEncoding)
+        } catch {
+            if DEBUG_MODE {
+                print("[ \(DEBUG_TARGET) ][ DEBUG ] String file has not parameter.")
+                print("[ \(DEBUG_TARGET) ][ ERROR ] Read string file failed.")
+            }
+        }
+        return result
     }
     
     /**
@@ -127,7 +169,7 @@ public class PFFile: NSObject {
      - Returns: 写入结果
      */
     public class func modifyWithName(fileName: String, setParams params: Dictionary<String, AnyObject>) -> Bool {
-        return (params as NSDictionary).writeToFile(PFFile.readWithName(fileName, directory: "document", type: nil) as! String, atomically: true)
+        return (params as NSDictionary).writeToFile(File.readWithName(fileName, directory: "document", type: nil) as! String, atomically: true)
     }
     
     /**
@@ -141,7 +183,7 @@ public class PFFile: NSObject {
         var dictionary = readDictionaryWithName(fileName)
         dictionary.removeValueForKey("")
         dictionary.addEntries(params)
-        return PFFile.modifyWithName(fileName, setParams: dictionary)
+        return File.modifyWithName(fileName, setParams: dictionary)
     }
     
     /**
@@ -154,16 +196,48 @@ public class PFFile: NSObject {
         let path = readWithName(fileName, directory: "document", type: nil) as! String
         let manager = NSFileManager.defaultManager()
         if manager.fileExistsAtPath(path) {//如果文件存在则删除文件
-            try! manager.removeItemAtPath(path)
+            do {
+                try manager.removeItemAtPath(path)
+                if DEBUG_MODE {
+                    print("[ \(DEBUG_TARGET) ][ DEBUG ] File removed.")
+                }
+            } catch {
+                if DEBUG_MODE {
+                    print("[ \(DEBUG_TARGET) ][ ERROR ] File remove failed.")
+                }
+            }
+        } else if DEBUG_MODE {
+            print("[ \(DEBUG_TARGET) ][ ERROR ] File does not exist.")
         }
     }
+    
+    /**
+     调试模式
+     - Note: 无
+     - Parameter openOrNot: 是否打开调试模式
+     - Parameter target: 调试目标
+     - Returns: 无
+     */
+    public class func debugMode(openOrNot: Bool, debugTarget target: String) {
+        DEBUG_MODE = openOrNot
+        DEBUG_TARGET = target
+    }
+    
+    // MARK: - Private Methods
     
     ///读取资源包文件或沙盒文件
     private class func readWithName(fileName: String, directory: String, type: String?) -> AnyObject {
         if directory == "bundle" {//资源包文件
             let path = NSBundle.mainBundle().pathForResource(fileName, ofType: type)
-            let string = try? String(contentsOfFile: path!, encoding: NSUTF8StringEncoding)
-            return string!.dataUsingEncoding(NSUTF8StringEncoding)!
+            var string = String()
+            do {
+                string = try String(contentsOfFile: path!, encoding: NSUTF8StringEncoding)
+            } catch {
+                if DEBUG_MODE {
+                    print("[ \(DEBUG_TARGET) ][ ERROR ] Read file failed.")
+                }
+            }
+            return string.dataUsingEncoding(NSUTF8StringEncoding)!
         } else {//沙盒文件
             let paths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
             let path = NSURL(fileURLWithPath: paths[0]).URLByAppendingPathComponent(fileName)

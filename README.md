@@ -9,30 +9,27 @@
 
 版本
 ---
-0.0.4
+0.0.5
 
 说明
 ---
 #### 关于项目
-本项目既是一个iOS开发的示例工程，也是一个可用于快速开发的集成框架，为iOS初学者、工程管理能力较弱以及需要进行快速工程搭建的开发者提供一个基础的框架。
+本项目既是一个iOS开发的示例工程，也是一个可用于快速开发的集成框架，为iOS初学者、工程管理能力较弱以及需要进行快速工程搭建的开发者提供一个基础的框架。<br>
 本项目已嵌入了以下能力：
-
 * CocoaPods
 * 网络请求
 * KVC解析JSON
 
 #### 目录解释
-`Project`使用`MVVM`架构搭建，共分为3个部分。
+`Project`使用`MVVM`架构搭建，共分为2个目录，3个部分。
 
 * Pods - CocoaPods目录，集合了工程使用的所有第三方类库，用于作为工程底层的支持。
-* Builds - 基础框架目录，提供工程使用的基础父类，提供快速开发的基本能力
 * Project - 工程目录，项目开发的目录。开发者在本层进行开发工作。
-
-#### 关于CocoaPods
-本项目不接入CocoaPods。
+    * Project - 包含有App开发的代码，资源，配置文件等。
+    * Base Framework - 基础框架目录，提供工程使用的基础父类，提供快速开发的基本能力。
 
 #### 关于Objective-C
-为方便开发者使用，本框架另提供了Objective-C版本。[点我跳转](https://github.com/PFei-He/Project-ObjC)至`Project-ObjC`
+`Project`提供了`Objective-C`版本以便使用。[点我跳转](https://github.com/PFei-He/Project-ObjC)至`Project-ObjC`
 
 示例代码
 ---
@@ -97,10 +94,18 @@ override func requestSuccessNotification(notification: NSNotification) {
 ![Screenshot](https://github.com/PFei-He/Project-Swift/blob/master/Supports/Screenshot.png)
 
 模板中带有以下的类，请开发者自行选择继承
-* BasisModel - 数据模型和请求接口
-* BasisCollectionViewController - 图表视图控制器
-* BasisTableViewController - 列表视图控制器
-* BasisViewController - 视图控制器
+* BaseModel - 基础数据模型
+* BaseRequest - 基础请求处理
+* BaseCollectionViewController - 基础图表视图控制器
+* BaseTableViewController - 基础列表视图控制器
+* BaseViewController - 基础视图控制器
+
+开源声明
+---
+#### 本类库使用了以下类库
+* [Alamofire](https://github.com/Alamofire/Alamofire)
+* [PFKitSwift](https://github.com/PFei-He/PFKitSwift)
+* [SVProgressHUD](https://github.com/SVProgressHUD/SVProgressHUD)
 
 许可证
 ---

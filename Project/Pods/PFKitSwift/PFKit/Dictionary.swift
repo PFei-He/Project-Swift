@@ -1,13 +1,11 @@
 //
-//  PFDictionary.swift
-//  PFSwift
+//  Dictionary.swift
+//  PFKit
 //
-//  Created by PFei_He on 15/11/21.
-//  Copyright © 2015年 PF-Lib. All rights reserved.
+//  Created by PFei_He on 16/5/12.
+//  Copyright © 2016年 PFei_He. All rights reserved.
 //
-//  https://github.com/PFei-He/PFSwift
-//
-//  vesion: 0.4.0
+//  https://github.com/PFei-He/PFKitSwift
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal

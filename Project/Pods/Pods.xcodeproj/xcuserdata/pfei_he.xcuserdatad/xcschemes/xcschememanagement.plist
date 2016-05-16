@@ -9,7 +9,7 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>PFSwift.xcscheme</key>
+		<key>PFKitSwift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -27,7 +27,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>69B9ABEB39128EF14062312D5FC17D39</key>
+		<key>08BC27DF27203BD3DC6CB409ADC620F1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>0F86DE37FB7002F0375A348BF70C1CA1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -37,12 +42,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>86B13488B92F961F31DAFF6112A05D3D</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>FF70B67BE3D51F3D9527396FEA0ACBFB</key>
+		<key>8E61DD3E08D66041550F29CFEC849ACD</key>
 		<dict>
 			<key>primary</key>
 			<true/>

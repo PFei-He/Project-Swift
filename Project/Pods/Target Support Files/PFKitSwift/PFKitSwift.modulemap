@@ -1,0 +1,6 @@
+framework module PFKitSwift {
+  umbrella header "PFKitSwift-umbrella.h"
+
+  export *
+  module * { export * }
+}

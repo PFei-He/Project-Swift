@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         //打开调试模式
-//        DebugMode.open(true)
+        DebugMode.open(true)
         //初始化登录页（初始打开为引导页）
         window?.rootViewController = Initialization.initLaunch()
         //初始化主机地址

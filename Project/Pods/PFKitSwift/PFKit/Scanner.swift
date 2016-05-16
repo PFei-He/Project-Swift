@@ -1,13 +1,11 @@
 //
-//  PFScanner.swift
-//  PFSwift
+//  Scanner.swift
+//  PFKit
 //
-//  Created by PFei_He on 15/11/17.
-//  Copyright © 2015年 PF-Lib. All rights reserved.
+//  Created by PFei_He on 16/5/12.
+//  Copyright © 2016年 PFei_He. All rights reserved.
 //
-//  https://github.com/PFei-He/PFSwift
-//
-//  vesion: 0.4.0
+//  https://github.com/PFei-He/PFKitSwift
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -29,6 +27,8 @@
 //
 //  ***** 扫描器 *****
 //
+
+import Foundation
 
 import UIKit
 import AVFoundation
@@ -78,7 +78,7 @@ public class PFScanner: NSObject, AVCaptureMetadataOutputObjectsDelegate {
     }
     
     // MARK: - Public Methods
-
+    
     /**
      创建扫描器
      - Note: 无
@@ -117,12 +117,12 @@ public class PFScanner: NSObject, AVCaptureMetadataOutputObjectsDelegate {
          */
         //设置输出的格式
         output.metadataObjectTypes = [AVMetadataObjectTypeCode128Code,
-            AVMetadataObjectTypeCode39Code,
-            AVMetadataObjectTypeCode39Mod43Code,
-            AVMetadataObjectTypeCode93Code,
-            AVMetadataObjectTypeEAN13Code,
-            AVMetadataObjectTypeEAN8Code,
-            AVMetadataObjectTypeQRCode]
+                                      AVMetadataObjectTypeCode39Code,
+                                      AVMetadataObjectTypeCode39Mod43Code,
+                                      AVMetadataObjectTypeCode93Code,
+                                      AVMetadataObjectTypeEAN13Code,
+                                      AVMetadataObjectTypeEAN8Code,
+                                      AVMetadataObjectTypeQRCode]
         
         //设置预览
         previewLayer = AVCaptureVideoPreviewLayer(session: session)
@@ -135,7 +135,7 @@ public class PFScanner: NSObject, AVCaptureMetadataOutputObjectsDelegate {
         //开始会话
         session.startRunning()
     }
-
+    
     // MARK: - AVCaptureMetadataOutputObjectsDelegate Methods
     
     public func captureOutput(captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [AnyObject]!, fromConnection connection: AVCaptureConnection!) {

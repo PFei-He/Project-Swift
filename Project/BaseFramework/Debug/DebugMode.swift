@@ -39,20 +39,27 @@
 //
 
 import UIKit
+import PFKitSwift
 
 public class DebugMode: NSObject {
 
     /**
-     调试模式
+     调试模式开关
      - Note: 无
-     - Parameter true 或 false
+     - Parameter debugOrNot: 是否打开调试模式
      - Returns: 无
      */
     public class func open(debugOrNot: Bool) {
-        BaseCollectionViewController.setDebugMode(debugOrNot)
-        BaseRequest.setDebugMode(debugOrNot)
-        BaseTableViewController.setDebugMode(debugOrNot)
-        BaseViewController.setDebugMode(debugOrNot)
+        debugVersion()
+        Debug.debugMode(debugOrNot, debugTarget: "PROJECT")
+        
+        // MODEL
+        BaseRequest.debugMode(debugOrNot)
+        
+        // VIEW MODEL
+        BaseCollectionViewController.debugMode(debugOrNot)
+        BaseTableViewController.debugMode(debugOrNot)
+        BaseViewController.debugMode(debugOrNot)
     }
     
     /**
@@ -61,7 +68,14 @@ public class DebugMode: NSObject {
      - Parameter 无
      - Returns: 版本号
      */
-    func version() -> String {
-        return "[ Base Framework ] current version: 0.0.4"
+    class func debugVersion() {
+        print("[ PROJECT ][ INFO ] THANK YOU FOR USING !!")
+        print("[ PROJECT ][ INFO ] Current version: 0.0.5.")
+        print("[ PROJECT ][ INFO ] Programming language: swift.")
+        print("[ PROJECT ][ INFO ] Open source license: MIT.")
+        print("[ PROJECT ][ INFO ] Join me: https://github.com/PFei-He/Project-Swift.")
+        print("[ PROJECT ][ INFO ] Using lib: Alamofire https://github.com/Alamofire/Alamofire.")
+        print("[ PROJECT ][ INFO ] Using lib: PFKitSwift https://github.com/PFei-He/PFKitSwift.")
+        print("[ PROJECT ][ INFO ] Using lib: SVProgressHUD https://github.com/SVProgressHUD/SVProgressHUD.")
     }
 }
