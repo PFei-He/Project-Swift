@@ -1,6 +1,6 @@
 PODS:
   - Alamofire (3.4.0)
-  - PFKitSwift (0.0.6)
+  - PFKitSwift (0.0.7)
   - SVProgressHUD (1.1.3)
 
 DEPENDENCIES:
@@ -10,7 +10,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Alamofire: c19a627cefd6a95f840401c49ab1f124e07f54ee
-  PFKitSwift: c46ca97ecf7e894b08cf3fcb490db39d5120c539
+  PFKitSwift: aa5e09601bbebbb774476be589c0253d0cf48aeb
   SVProgressHUD: 748080e4f36e603f6c02aec292664239df5279c1
 
 PODFILE CHECKSUM: 3e7d6b11cdb54dac951cb588e917fa7aa4aae901

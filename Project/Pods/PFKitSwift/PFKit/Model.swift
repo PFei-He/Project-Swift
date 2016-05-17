@@ -102,7 +102,14 @@ public class Model: NSObject, NSXMLParserDelegate {
                 }
                 return
             } else if json is NSData {
-                json = try? NSJSONSerialization.JSONObjectWithData(json as! NSData, options: .AllowFragments)
+                do {
+                    json = try NSJSONSerialization.JSONObjectWithData(json as! NSData, options: .AllowFragments)
+                } catch {
+                    if DEBUG_MODE {
+                        print("[ \(DEBUG_TARGET) ][ ERROR ] The JSON object can't be parsed.")
+                        print("[ \(DEBUG_TARGET) ][ ERROR ] Class: \(String(classForCoder)).")
+                    }
+                }
             }
             //将键值设置为属性（解析JSON）
             setValuesForKeysWithDictionary(json as! Dictionary<String, AnyObject>)
@@ -133,7 +140,7 @@ public class Model: NSObject, NSXMLParserDelegate {
             if parser.parse() {//解析XML
                 self.JSON = array[0]
             } else if DEBUG_MODE {
-                print("[ \(DEBUG_TARGET) ][ ERROR ] XML data can't be parse.")
+                print("[ \(DEBUG_TARGET) ][ ERROR ] The XML object can't be parsed.")
                 print("[ \(DEBUG_TARGET) ][ ERROR ] Class: \(String(classForCoder)).")
             }
         }

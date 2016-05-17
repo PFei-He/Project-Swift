@@ -55,11 +55,11 @@ public class BaseRequest: Model {
     /**
      调试模式
      - Note: 无
-     - Parameter debugOrNot: 是否打开调试模式
+     - Parameter openOrNot: 是否打开调试模式
      - Returns: 无
      */
-    public class func debugMode(debugOrNot: Bool) {
-        DEBUG_MODE = debugOrNot
+    public class func debugMode(openOrNot: Bool) {
+        DEBUG_MODE = openOrNot
     }
     
     /**
@@ -110,6 +110,9 @@ public class BaseRequest: Model {
      */
     public func sendWithAPI(api: String, params: Dictionary<String, AnyObject>, results: (JSON: AnyObject?) -> Void) {
         
+        //发送请求开始的通知
+        NSNotificationCenter.defaultCenter().postNotificationName(String(classForCoder)+"Started", object: classForCoder)
+        
         if DEBUG_MODE {
             print("[ RPOJECT ][ DEBUG ] Request url: \(BaseRequest.sharedInstance().hostAddress+api).")
             if !params.isEmpty {
@@ -127,7 +130,7 @@ public class BaseRequest: Model {
                 }
                 results(JSON: nil)
             }
-            })
+        })
     }
     
     /**
@@ -137,8 +140,8 @@ public class BaseRequest: Model {
      - Returns: 无
      */
     public func addRequester(requester: AnyObject) {
-        NSNotificationCenter.defaultCenter().addObserver(requester, selector: NSSelectorFromString("requestWillStartNotification:"), name: String(classForCoder)+"WillStart", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(requester, selector: NSSelectorFromString("requestWasEndedNotification:"), name: String(classForCoder)+"WasEnded", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(requester, selector: NSSelectorFromString("requestStartedNotification:"), name: String(classForCoder)+"Started", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(requester, selector: NSSelectorFromString("requestEndedNotification:"), name: String(classForCoder)+"Ended", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(requester, selector: NSSelectorFromString("requestSuccessNotification:"), name: String(classForCoder)+"Success", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(requester, selector: NSSelectorFromString("requestFailedNotification:"), name: String(classForCoder)+"Failed", object: nil)
     }
@@ -149,9 +152,9 @@ public class BaseRequest: Model {
      - Parameter 无
      - Returns: 无
      */
-    public func requestWillStart() {
-        NSNotificationCenter.defaultCenter().postNotificationName(String(classForCoder)+"WillStart", object: classForCoder)
-    }
+//    public func requestWillStart() {
+//        NSNotificationCenter.defaultCenter().postNotificationName(String(classForCoder)+"WillStart", object: classForCoder)
+//    }
     
     /**
      请求已经结束
@@ -159,9 +162,9 @@ public class BaseRequest: Model {
      - Parameter 无
      - Returns: 无
      */
-    public func requestWasEnded() {
-        NSNotificationCenter.defaultCenter().postNotificationName(String(classForCoder)+"WasEnded", object: classForCoder)
-    }
+//    public func requestWasEnded() {
+//        NSNotificationCenter.defaultCenter().postNotificationName(String(classForCoder)+"WasEnded", object: classForCoder)
+//    }
     
     /**
      请求成功
@@ -170,7 +173,12 @@ public class BaseRequest: Model {
      - Returns: 无
      */
     public func requestSuccessWithObject(object: AnyObject) {
+        
+        //发送请求成功通知
         NSNotificationCenter.defaultCenter().postNotificationName(String(classForCoder)+"Success", object: object, userInfo: ["sender": classForCoder])
+        
+        //发送请求结束通知
+        NSNotificationCenter.defaultCenter().postNotificationName(String(classForCoder)+"Ended", object: classForCoder)
     }
     
     /**
@@ -181,9 +189,14 @@ public class BaseRequest: Model {
      - Returns: 无
      */
     public func requestSuccessWithObject(object: AnyObject, userInfo: Dictionary<String, AnyObject>) {
+        
+        //发送请求成功通知
         var dictionary = userInfo
         dictionary.addEntries(["sender": classForCoder])
         NSNotificationCenter.defaultCenter().postNotificationName(String(classForCoder)+"Success", object: object, userInfo: dictionary)
+        
+        //发送请求结束通知
+        NSNotificationCenter.defaultCenter().postNotificationName(String(classForCoder)+"Ended", object: classForCoder)
     }
     
     /**
@@ -193,7 +206,12 @@ public class BaseRequest: Model {
      - Returns: 无
      */
     public func requestFailedWithObject(object: AnyObject) {
+        
+        //发送请求失败通知
         NSNotificationCenter.defaultCenter().postNotificationName(String(classForCoder)+"Failed", object: object, userInfo: ["sender": classForCoder])
+        
+        //发送请求结束通知
+        NSNotificationCenter.defaultCenter().postNotificationName(String(classForCoder)+"Ended", object: classForCoder)
     }
     
     /**
@@ -204,9 +222,14 @@ public class BaseRequest: Model {
      - Returns: 无
      */
     public func requestFailedWithObject(object: AnyObject, userInfo: Dictionary<String, AnyObject>) {
+        
+        //发送请求失败通知
         var dictionary = userInfo
         dictionary.addEntries(["sender": classForCoder])
         NSNotificationCenter.defaultCenter().postNotificationName(String(classForCoder)+"Failed", object: object, userInfo: dictionary)
+        
+        //发送请求结束通知
+        NSNotificationCenter.defaultCenter().postNotificationName(String(classForCoder)+"Ended", object: classForCoder)
     }
     
     /**
@@ -216,8 +239,8 @@ public class BaseRequest: Model {
      - Returns: 无
      */
     public func removeRequester(requester: AnyObject) {
-        NSNotificationCenter.defaultCenter().removeObserver(requester, name: String(classForCoder)+"WillStart", object: nil)
-        NSNotificationCenter.defaultCenter().removeObserver(requester, name: String(classForCoder)+"WasEnded", object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(requester, name: String(classForCoder)+"Started", object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(requester, name: String(classForCoder)+"Ended", object: nil)
         NSNotificationCenter.defaultCenter().removeObserver(requester, name: String(classForCoder)+"Success", object: nil)
         NSNotificationCenter.defaultCenter().removeObserver(requester, name: String(classForCoder)+"Failed", object: nil)
     }

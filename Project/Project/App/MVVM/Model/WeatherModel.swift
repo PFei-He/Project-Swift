@@ -71,16 +71,13 @@ class WeatherRequest: BaseRequest {
      - Returns: 无
      */
     func send() {
-        requestWillStart()
         send { [unowned self] (JSON) -> Void in
             if JSON != nil {
                 let model = WeatherModel(JSON: JSON!)
                 let result = WeatherResult(JSON: model.weatherinfo)
                 self.requestSuccessWithObject(result)
-                self.requestWasEnded()
             } else {
                 self.requestFailedWithObject("请求失败")
-                self.requestWasEnded()
             }
         }
     }

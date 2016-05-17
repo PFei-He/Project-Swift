@@ -53,10 +53,10 @@ class UserSettings: BaseModel {
     /**
      保存用户设置
      - Note: 无
-     - Parameter userSetting: 需要保存的用户设置
+     - Parameter userSettings: 需要保存的用户设置
      - Returns: 保存结果
      */
-    class func setUserSettings(settings: Dictionary<String, AnyObject>) -> Bool {
-        return File.modifyWithName("User-Settings.txt", setParams: settings)
+    class func setUserSettings(userSettings: Dictionary<String, AnyObject>) -> Bool {
+        return File.modifyWithName("User-Settings.txt", setParams: userSettings)
     }
 }

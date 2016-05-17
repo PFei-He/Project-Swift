@@ -122,7 +122,6 @@ public class QRCode: NSObject {
             //返回定制二维码
             return iconQRCode
         }
-        
         //返回二维码
         return QRCode
     }

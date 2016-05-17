@@ -128,12 +128,12 @@ public class BaseViewController: UIViewController {
      - Parameter notification: 请求返回的通知对象
      - Returns: 无
      */
-    public func requestWillStartNotification(notification: NSNotification) {
+    public func requestStartedNotification(notification: NSNotification) {
         //显示提示框
         SVProgressHUD.showWithStatus("加载中")
         
         if DEBUG_MODE {
-            print("[ PROJECT ][ DEBUG ] Request will start with sender: \(notification.object!).")
+            print("[ PROJECT ][ DEBUG ] Request started with sender: \(notification.object!).")
             print("[ PROJECT ][ DEBUG ] Requester: \(String(classForCoder)).")
         }
     }
@@ -144,7 +144,7 @@ public class BaseViewController: UIViewController {
      - Parameter notification: 请求返回的通知对象
      - Returns: 无
      */
-    public func requestWasEndedNotification(notification: NSNotification) {
+    public func requestEndedNotification(notification: NSNotification) {
         if _requestSuccess {//请求成功
             //移除提示框
             SVProgressHUD.dismiss()
@@ -154,7 +154,7 @@ public class BaseViewController: UIViewController {
         }
         
         if DEBUG_MODE {
-            print("[ PROJECT ][ DEBUG ] Request was ended with sender: \(notification.object!).")
+            print("[ PROJECT ][ DEBUG ] Request ended with sender: \(notification.object!).")
         }
     }
     
@@ -197,11 +197,11 @@ public class BaseViewController: UIViewController {
     /**
      调试模式
      - Note: 无
-     - Parameter debugOrNot: 是否打开调试模式
+     - Parameter openOrNot: 是否打开调试模式
      - Returns: 无
      */
-    public class func debugMode(debugOrNot: Bool) {
-        DEBUG_MODE = debugOrNot
+    public class func debugMode(openOrNot: Bool) {
+        DEBUG_MODE = openOrNot
     }
 }
 

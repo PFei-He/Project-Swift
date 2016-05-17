@@ -29,11 +29,15 @@
 //
 
 import Foundation
-
 import UIKit
 import AVFoundation
 
-public protocol PFScannerDelegate: NSObjectProtocol {
+///调试模式
+private var DEBUG_MODE = false
+///调试目标
+private var DEBUG_TARGET = ""
+
+public protocol ScannerDelegate: NSObjectProtocol {
     
     /**
      扫描完成
@@ -41,10 +45,10 @@ public protocol PFScannerDelegate: NSObjectProtocol {
      - Parameter string: 扫描结果转换成的字符串
      - Returns: 无
      */
-    func scanner(scanner: PFScanner, captureCompletedWithString string: String)
+    func scanner(scanner: Scanner, captureCompletedWithString string: String)
 }
 
-public class PFScanner: NSObject, AVCaptureMetadataOutputObjectsDelegate {
+public class Scanner: NSObject, AVCaptureMetadataOutputObjectsDelegate {
     
     /* 详见AVCaptureOutput类的rectOfInterest */
     ///扫描器的工作区域
@@ -58,8 +62,10 @@ public class PFScanner: NSObject, AVCaptureMetadataOutputObjectsDelegate {
     private var _rectOfInterest: CGRect!
     
     ///代理
-    weak public var delegate:   PFScannerDelegate?
+    weak public var delegate:   ScannerDelegate?
     
+    ///输入
+    private var input:          AVCaptureInput!
     ///输出
     private var output:         AVCaptureMetadataOutput!
     ///拍摄会话
@@ -72,7 +78,6 @@ public class PFScanner: NSObject, AVCaptureMetadataOutputObjectsDelegate {
     //初始化
     public override init() {
         super.init()
-        
         //设置输出（Metadata元数据）
         output = AVCaptureMetadataOutput()
     }
@@ -90,8 +95,14 @@ public class PFScanner: NSObject, AVCaptureMetadataOutputObjectsDelegate {
         //实例化摄像头设备
         let device = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
         
-        //设置输入，把摄像头作为输入设备
-        let input = try? AVCaptureDeviceInput(device: device)
+        do {
+            //设置输入，把摄像头作为输入设备
+            input = try AVCaptureDeviceInput(device: device)
+        } catch {
+            if DEBUG_MODE {
+                print("[ \(DEBUG_TARGET) ][ ERROR ] Device input error.")
+            }
+        }
         
         //设置输出的代理
         output.setMetadataObjectsDelegate(self, queue: dispatch_get_main_queue())
@@ -134,6 +145,18 @@ public class PFScanner: NSObject, AVCaptureMetadataOutputObjectsDelegate {
         
         //开始会话
         session.startRunning()
+    }
+    
+    /**
+     调试模式
+     - Note: 无
+     - Parameter openOrNot: 是否打开调试模式
+     - Parameter target: 调试目标
+     - Returns: 无
+     */
+    public class func debugMode(openOrNot: Bool, debugTarget terget: String) {
+        DEBUG_MODE = openOrNot
+        DEBUG_TARGET = terget
     }
     
     // MARK: - AVCaptureMetadataOutputObjectsDelegate Methods
