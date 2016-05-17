@@ -45,12 +45,12 @@ public class File: NSObject {
      - Parameter fileName: 文件名
      - Returns: 无
      */
-    public class func createWithName(fileName: String) {
-        let path = readWithName(fileName, directory: "document", type: nil) as! String
+    public class func create(fileName: String) {
+        let path = read(fileName, directory: "document", type: nil) as! String
         let manager = NSFileManager.defaultManager()
         if !manager.fileExistsAtPath(path) {//如果文件不存在则创建文件
             let result = manager.createFileAtPath(path, contents:nil, attributes:nil)
-            modifyWithName(fileName, setParams: Dictionary<String, AnyObject>())
+            modify(fileName, setParams: Dictionary<String, AnyObject>())
             if result && DEBUG_MODE {
                 print("[ \(DEBUG_TARGET) ][ DEBUG ] File created.")
                 print("[ \(DEBUG_TARGET) ][ DEBUG ] File path: \(path).")
@@ -70,12 +70,12 @@ public class File: NSObject {
      - Parameter params: 写入的参数
      - Returns: 无
      */
-    public class func createWithName(fileName: String, params: Dictionary<String, AnyObject>) {
-        let path = readWithName(fileName, directory: "document", type: nil) as! String
+    public class func create(fileName: String, params: Dictionary<String, AnyObject>) {
+        let path = read(fileName, directory: "document", type: nil) as! String
         let manager = NSFileManager.defaultManager()
         if !manager.fileExistsAtPath(path) {//如果文件不存在则创建文件
             let result = manager.createFileAtPath(path, contents:nil, attributes:nil)
-            modifyWithName(fileName, setParams: params)
+            modify(fileName, setParams: params)
             if result && DEBUG_MODE {
                 print("[ \(DEBUG_TARGET) ][ DEBUG ] File created.")
                 print("[ \(DEBUG_TARGET) ][ DEBUG ] File path: \(path).")
@@ -94,8 +94,8 @@ public class File: NSObject {
      - Parameter fileName: 文件名
      - Returns: 文件中的数据
      */
-    public class func readDictionaryWithName(fileName: String) -> Dictionary<String, AnyObject> {
-        let string = readWithName(fileName, directory: "document", type: nil) as! String
+    public class func read(dictionary fileName: String) -> Dictionary<String, AnyObject> {
+        let string = read(fileName, directory: "document", type: nil) as! String
         let dictionary = Dictionary<String, AnyObject>()
         if string != "" {
             var dictionary = NSDictionary(contentsOfFile: string) as! Dictionary<String, AnyObject>
@@ -116,12 +116,12 @@ public class File: NSObject {
      - Parameter fileName: 文件名
      - Returns: 文件中的数据
      */
-    public class func readStringWithName(fileName: String) -> String {
-        var dictionary = NSDictionary(contentsOfFile: readWithName(fileName, directory: "document", type: nil) as! String) as! Dictionary<String, AnyObject>
+    public class func read(string fileName: String) -> String {
+        var dictionary = NSDictionary(contentsOfFile: read(fileName, directory: "document", type: nil) as! String) as! Dictionary<String, AnyObject>
         dictionary.removeValueForKey("")
         var result = String()
         do {
-            result = try String(contentsOfFile: readWithName(fileName, directory: "document", type: nil) as! String, encoding: NSUTF8StringEncoding)
+            result = try String(contentsOfFile: read(fileName, directory: "document", type: nil) as! String, encoding: NSUTF8StringEncoding)
         } catch {
             if DEBUG_MODE {
                 print("[ \(DEBUG_TARGET) ][ DEBUG ] String file has not parameter.")
@@ -137,8 +137,8 @@ public class File: NSObject {
      - Parameter fileName: 文件名
      - Returns: 文件中的数据
      */
-    public class func readJSONWithName(fileName: String) -> NSData {
-        return readWithName(fileName, directory: "bundle", type: "json") as! NSData
+    public class func read(JSON fileName: String) -> NSData {
+        return read(fileName, directory: "bundle", type: "json") as! NSData
     }
     
     /**
@@ -147,8 +147,8 @@ public class File: NSObject {
      - Parameter fileName: 文件名
      - Returns: 文件中的数据
      */
-    public class func readXMLWithName(fileName: String) -> NSData {
-        return readWithName(fileName, directory: "bundle", type: "xml") as! NSData
+    public class func read(XML fileName: String) -> NSData {
+        return read(fileName, directory: "bundle", type: "xml") as! NSData
     }
     
     /**
@@ -157,8 +157,8 @@ public class File: NSObject {
      - Parameter fileName: 文件名
      - Returns: 文件路径
      */
-    public class func readPathWithName(fileName: String) -> String {
-        return readWithName(fileName, directory: "document", type: nil) as! String
+    public class func read(path fileName: String) -> String {
+        return read(fileName, directory: "document", type: nil) as! String
     }
     
     /**
@@ -168,8 +168,8 @@ public class File: NSObject {
      - Parameter params: 写入到文件的参数
      - Returns: 写入结果
      */
-    public class func modifyWithName(fileName: String, setParams params: Dictionary<String, AnyObject>) -> Bool {
-        return (params as NSDictionary).writeToFile(File.readWithName(fileName, directory: "document", type: nil) as! String, atomically: true)
+    public class func modify(fileName: String, setParams params: Dictionary<String, AnyObject>) -> Bool {
+        return (params as NSDictionary).writeToFile(File.read(fileName, directory: "document", type: nil) as! String, atomically: true)
     }
     
     /**
@@ -179,11 +179,11 @@ public class File: NSObject {
      - Parameter params: 添加到文件的参数
      - Returns: 写入结果
      */
-    public class func modifyWithName(fileName: String, addParams params: Dictionary<String, AnyObject>) -> Bool {
-        var dictionary = readDictionaryWithName(fileName)
+    public class func modify(fileName: String, addParams params: Dictionary<String, AnyObject>) -> Bool {
+        var dictionary = read(dictionary: fileName)
         dictionary.removeValueForKey("")
         dictionary.addEntries(params)
-        return File.modifyWithName(fileName, setParams: dictionary)
+        return File.modify(fileName, setParams: dictionary)
     }
     
     /**
@@ -192,8 +192,8 @@ public class File: NSObject {
      - Parameter fileName: 文件名
      - Returns: 无
      */
-    public class func removeWithName(fileName: String) {
-        let path = readWithName(fileName, directory: "document", type: nil) as! String
+    public class func remove(fileName: String) {
+        let path = read(fileName, directory: "document", type: nil) as! String
         let manager = NSFileManager.defaultManager()
         if manager.fileExistsAtPath(path) {//如果文件存在则删除文件
             do {
@@ -226,7 +226,7 @@ public class File: NSObject {
     // MARK: - Private Methods
     
     ///读取资源包文件或沙盒文件
-    private class func readWithName(fileName: String, directory: String, type: String?) -> AnyObject {
+    private class func read(fileName: String, directory: String, type: String?) -> AnyObject {
         if directory == "bundle" {//资源包文件
             let path = NSBundle.mainBundle().pathForResource(fileName, ofType: type)
             var string = String()

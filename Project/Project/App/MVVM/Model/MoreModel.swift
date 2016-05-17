@@ -64,7 +64,7 @@ class MoreRequest: BaseRequest {
      */
     func send() {
         let model = MoreModel(JSON: params())
-        requestSuccessWithObject(model)
+        requestSuccess(model)
     }
     
     ///参数

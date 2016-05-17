@@ -9,7 +9,7 @@
 
 版本 Version
 ---
-0.0.7
+0.0.8
 
 说明 Detail
 ---
@@ -38,7 +38,7 @@
 ```
 target 'YourTarget' do
     platform:ios, '8.0'
-    pod 'PFKitSwift', '~> 0.0.7'
+    pod 'PFKitSwift', '~> 0.0.8'
 end
 ```
 

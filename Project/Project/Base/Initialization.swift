@@ -79,7 +79,7 @@ class Initialization: NSObject {
      - Returns: 无
      */
     class func initApi() {
-        Api.sharedInstance().JSON = File.readJSONWithName("api")
+        Api.sharedInstance().JSON = File.read(JSON: "api")
     }
     
     /**
@@ -89,6 +89,6 @@ class Initialization: NSObject {
      - Returns: 无
      */
     class func initUserFile() {
-        File.createWithName("User-Settings.txt")
+        File.create("User-Settings.txt")
     }
 }

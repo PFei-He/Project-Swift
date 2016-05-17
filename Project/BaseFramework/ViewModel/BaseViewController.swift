@@ -97,7 +97,7 @@ public class BaseViewController: UIViewController {
     public func initRequests(requests: Array<BaseRequest>) {
         self.requests = requests
         for request in requests {
-            request.addRequester(self)
+            request.add(self)
         }
     }
     
@@ -116,7 +116,7 @@ public class BaseViewController: UIViewController {
     ///移除请求
     private func removeRequests() {
         for request in self.requests {
-            request.removeRequester(self)
+            request.remove(self)
         }
     }
     

@@ -40,7 +40,7 @@ public class Debug: NSObject {
      */
     public class func debugVersion() {
         print("[ PFKit ][ INFO ] THANK YOU FOR USING !!")
-        print("[ PFKit ][ INFO ] Current version: 0.0.7.")
+        print("[ PFKit ][ INFO ] Current version: 0.0.8.")
         print("[ PFKit ][ INFO ] Programming language: Swift.")
         print("[ PFKit ][ INFO ] Open source license: MIT.")
         print("[ PFKit ][ INFO ] Join me: https://github.com/PFei-He/PFKitSwift.")

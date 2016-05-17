@@ -47,7 +47,7 @@ class UserSettings: BaseModel {
     //初始化
     override init() {
         super.init()
-        JSON = File.readDictionaryWithName("User-Settings.txt")
+        JSON = File.read(dictionary: "User-Settings.txt")
     }
     
     /**
@@ -57,6 +57,6 @@ class UserSettings: BaseModel {
      - Returns: 保存结果
      */
     class func setUserSettings(userSettings: Dictionary<String, AnyObject>) -> Bool {
-        return File.modifyWithName("User-Settings.txt", setParams: userSettings)
+        return File.modify("User-Settings.txt", setParams: userSettings)
     }
 }

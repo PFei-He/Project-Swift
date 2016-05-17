@@ -75,9 +75,9 @@ class WeatherRequest: BaseRequest {
             if JSON != nil {
                 let model = WeatherModel(JSON: JSON!)
                 let result = WeatherResult(JSON: model.weatherinfo)
-                self.requestSuccessWithObject(result)
+                self.requestSuccess(result)
             } else {
-                self.requestFailedWithObject("请求失败")
+                self.requestFailed("请求失败")
             }
         }
     }
