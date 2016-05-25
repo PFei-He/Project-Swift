@@ -51,7 +51,7 @@ class HomeViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initRequests([req])
+        add(requests: [req])
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -73,8 +73,7 @@ class HomeViewController: BaseViewController {
     
     // MARK: - Notification Management
     
-    override func requestSuccessNotification(notification: NSNotification) {
-        super.requestSuccessNotification(notification)
+    override func requestSuccess() {
         let result = successObject as! WeatherResult
         cityLabel.text = result.city
         temperatureLabel.text = String(result.temp)+"℃"

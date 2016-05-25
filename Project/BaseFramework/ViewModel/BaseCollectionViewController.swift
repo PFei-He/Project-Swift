@@ -48,34 +48,34 @@ private var DEBUG_MODE = false
 public class BaseCollectionViewController: UICollectionViewController {
     
     ///请求成功返回的结果
-    public var successObject:      AnyObject? {
+    public var successObject:       AnyObject? {
         return _successObject
     }
     private var _successObject:     AnyObject?
     
     ///请求失败返回的结果
-    public var failedObject:       AnyObject? {
-        return _failedObject
+    public var failureObject:       AnyObject? {
+        return _failureObject
     }
-    private var _failedObject:      AnyObject?
+    private var _failureObject:     AnyObject?
     
     ///请求返回的附加结果
-    public var additionalObjects:  AnyObject? {
+    public var additionalObjects:   AnyObject? {
         return _additionalObjects
     }
     private var _additionalObjects: AnyObject?
     
     ///请求的发送者
-    public var sender:             AnyObject? {
+    public var sender:              AnyObject? {
         return _sender
     }
     private var _sender:            AnyObject?
     
     ///请求是否成功
-    public var requestSuccess:     Bool {
-        return _requestSuccess
+    public var requestIsSuccess:    Bool {
+        return _requestIsSuccess
     }
-    private var _requestSuccess =   Bool()
+    private var _requestIsSuccess = Bool()
     
     ///所有的请求
     private var requests = Array<BaseRequest>()
@@ -83,7 +83,7 @@ public class BaseCollectionViewController: UICollectionViewController {
     //MARK: - Life Cycle
     
     deinit {
-        removeRequests()
+        removeAllRequests()
     }
     
     // MARK: - Request Management
@@ -94,7 +94,7 @@ public class BaseCollectionViewController: UICollectionViewController {
      - Parameter requests: 所有的请求
      - Returns: 无
      */
-    public func initRequests(requests: Array<BaseRequest>) {
+    public func add(requests requests: Array<BaseRequest>) {
         self.requests = requests
         for request in requests {
             request.add(self)
@@ -114,7 +114,7 @@ public class BaseCollectionViewController: UICollectionViewController {
 //    }
     
     ///移除请求
-    private func removeRequests() {
+    private func removeAllRequests() {
         for request in self.requests {
             request.remove(self)
         }
@@ -122,77 +122,113 @@ public class BaseCollectionViewController: UICollectionViewController {
     
     // MARK: - Notification Management
     
-    /**
-     请求即将开始
-     - Note: 此方法已实现提示框的处理，如需自定义，请自行重写此方法
-     - Parameter notification: 请求返回的通知对象
-     - Returns: 无
-     */
-    public func requestStartedNotification(notification: NSNotification) {
-        //显示提示框
-        SVProgressHUD.showWithStatus("加载中")
-        
-        if DEBUG_MODE {
+    //请求开始通知
+    func requestStartedNotification(notification: NSNotification) {
+        if DEBUG_MODE {//调试模式
             print("[ PROJECT ][ DEBUG ] Request started with sender: \(notification.object!).")
             print("[ PROJECT ][ DEBUG ] Requester: \(String(classForCoder)).")
         }
+        
+        //请求开始
+        requestStarted()
+    }
+    
+    //请求结束通知
+    func requestEndedNotification(notification: NSNotification) {
+        if DEBUG_MODE {//调试模式
+            print("[ PROJECT ][ DEBUG ] Request ended with sender: \(notification.object!).")
+        }
+        
+        //请求结束
+        requestEnded()
+    }
+    
+    //请求成功通知
+    func requestSuccessNotification(notification: NSNotification) {
+        if DEBUG_MODE {//调试模式
+            print("[ PROJECT ][ DEBUG ] Request success with result: \(notification.object!).")
+        }
+        
+        //处理请求结果
+        _successObject      = notification.object
+        if notification.userInfo is Dictionary<String, AnyObject> {
+            var dictionary: Dictionary<String, AnyObject> = notification.userInfo as Dictionary<String, AnyObject>
+            _additionalObjects = dictionary.removeValueForKey("sender")
+        }
+        _sender             = notification.userInfo?["sender"]
+        _requestIsSuccess   = true
+        
+        //请求成功
+        requestSuccess()
+    }
+    
+    //请求失败通知
+    func requestFailedNotification(notification: NSNotification) {
+        if DEBUG_MODE {//调试模式
+            print("[ PROJECT ][ DEBUG ] Request failed with result: \(notification.object!).")
+        }
+        
+        //处理请求结果
+        _failureObject      = notification.object
+        if notification.userInfo is Dictionary<String, AnyObject> {
+            var dictionary: Dictionary<String, AnyObject> = notification.userInfo as Dictionary<String, AnyObject>
+            _additionalObjects = dictionary.removeValueForKey("sender")
+        }
+        _sender             = notification.userInfo?["sender"]
+        _requestIsSuccess   = false
+        
+        //请求失败
+        requestFailed()
+    }
+    
+    // MARK: - Public Methods
+    
+    /**
+     请求开始
+     - Note: 此方法已实现提示框的处理，如需自定义，请自行重写此方法
+     - Parameter 无
+     - Returns: 无
+    */
+    public func requestStarted() {
+        //显示提示框
+        SVProgressHUD.showWithStatus("加载中")
     }
     
     /**
-     请求已经结束
+     请求结束
      - Note: 此方法已实现提示框的处理，如需自定义，请自行重写此方法
-     - Parameter notification: 请求返回的通知对象
+     - Parameter 无
      - Returns: 无
      */
-    public func requestEndedNotification(notification: NSNotification) {
-        if _requestSuccess {//请求成功
+    public func requestEnded() {
+        if _requestIsSuccess {//请求成功
             //移除提示框
             SVProgressHUD.dismiss()
         } else {//请求失败
             //显示请求失败的提示框
             SVProgressHUD.showErrorWithStatus("请求失败")
         }
-        
-        if DEBUG_MODE {
-            print("[ PROJECT ][ DEBUG ] Request ended with sender: \(notification.object!).")
-        }
     }
     
     /**
-     请求成功的通知
+     请求成功
      - Note: 无
-     - Parameter notification: 请求返回的通知对象
+     - Parameter 无
      - Returns: 无
      */
-    public func requestSuccessNotification(notification: NSNotification) {
-        _successObject      = notification.object
-        _additionalObjects  = notification.userInfo
-        _sender             = notification.userInfo?["sender"]
-        _requestSuccess     = true
-        
-        if DEBUG_MODE {
-            print("[ PROJECT ][ DEBUG ] Request success with result: \(notification.object!).")
-        }
+    public func requestSuccess() {
+        // Override this method to process the request when request success.
     }
     
     /**
-     请求失败的通知
+     请求失败
      - Note: 无
-     - Parameter notification: 请求返回的通知对象
+     - Parameter 无
      - Returns: 无
      */
-    public func requestFailedNotification(notification: NSNotification) {
-        _failedObject       = notification.object
-        _additionalObjects  = notification.userInfo
-        _sender             = notification.userInfo?["sender"]
-        _requestSuccess     = false
-        
-        if DEBUG_MODE {
-            print("[ PROJECT ][ DEBUG ] Request failed with result: \(notification.object!).")
-        }
+    public func requestFailed() {
+        // Override this method to process the request when request failed.
     }
-    
-    // MARK: - Public Methods
     
     /**
      调试模式

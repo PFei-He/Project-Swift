@@ -40,6 +40,18 @@
 
 import PFKitSwift
 
-public class BaseModel: Model {
+///调试模式
+private var DEBUG_MODE = false
 
+public class BaseModel: Model {
+    
+    /**
+     调试模式
+     - Note: 无
+     - Parameter openOrNot: 是否打开调试模式
+     - Returns: 无
+     */
+    public class func debugMode(openOrNot: Bool) {
+        DEBUG_MODE = openOrNot
+    }
 }
