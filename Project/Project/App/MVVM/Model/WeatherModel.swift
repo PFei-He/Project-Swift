@@ -39,7 +39,7 @@
 //
 
 
-import UIKit
+import Foundation
 
 class WeatherResult: BaseModel {
     

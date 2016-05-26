@@ -9,7 +9,7 @@
 
 版本
 ---
-0.0.7
+0.0.9
 
 说明
 ---
@@ -19,6 +19,9 @@
 * CocoaPods
 * 网络请求
 * KVC解析JSON
+* XML转化JSON
+* 二维码生成和扫描
+* 文件管理
 
 #### 目录解释
 `Project`使用`MVVM`架构搭建，共分为2个目录，3个部分。
@@ -57,9 +60,9 @@ func send() {
         if JSON != nil {
             let model = WeatherModel(JSON: JSON!)
             let result = WeatherResult(JSON: model.weatherinfo)
-            self.requestSuccess(result)
+            self.finished(successObject: result)
         } else {
-            self.requestFailed("请求失败")
+            self.finished(failureObject: "请求失败")
         }
     }
 }
@@ -68,13 +71,12 @@ func send() {
 #### ViewModel
 ```swift
 //添加网络请求
-initRequests([req])
+addRequests([req])
 ```
 
 ```swift
 //请求成功
-override func requestSuccessNotification(notification: NSNotification) {
-    super.requestSuccessNotification(notification)
+override func requestSuccess() {
     let result = successObject as! WeatherResult
     cityLabel.text = result.city
     temperatureLabel.text = String(result.temp)+"℃"

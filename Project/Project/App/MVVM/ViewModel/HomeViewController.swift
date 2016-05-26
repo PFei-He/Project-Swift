@@ -51,7 +51,7 @@ class HomeViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        add(requests: [req])
+        addRequests([req])
     }
     
     override func viewWillAppear(animated: Bool) {

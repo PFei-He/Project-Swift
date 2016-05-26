@@ -32,8 +32,8 @@ class ___FILEBASENAMEASIDENTIFIER___: ___VARIABLE_cocoaTouchSubclass___ {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //初始化网络请求
-        initRequests([req])
+        //添加网络请求
+        addRequests([req])
         
         //设置参数并发送请求
         params()

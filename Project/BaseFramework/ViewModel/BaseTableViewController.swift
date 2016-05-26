@@ -94,7 +94,7 @@ public class BaseTableViewController: UITableViewController {
      - Parameter requests: 所有的请求
      - Returns: 无
      */
-    public func add(requests requests: Array<BaseRequest>) {
+    public func addRequests(requests: Array<BaseRequest>) {
         self.requests = requests
         for request in requests {
             request.add(self)

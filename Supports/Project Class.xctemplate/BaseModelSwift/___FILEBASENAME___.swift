@@ -20,18 +20,17 @@
 //  ***** 数据模型接口 *****
 //
 
-import PFSwift
-import Builds
+import Foundation
 
-class <#Result#>: PFModel {
+class <#Result#>: BaseModel {
     
 }
 
-class ___FILEBASENAMEASIDENTIFIER___: PFModel {
+class ___FILEBASENAMEASIDENTIFIER___: BaseModel {
 
 }
 
-class <#Request#>: BasisRequest {
+class <#Request#>: BaseRequest {
     
     /**
      发送请求
@@ -40,14 +39,11 @@ class <#Request#>: BasisRequest {
      - Returns: 无
      */
     func send() {
-        requestWillStart()
-        sendWithAPI(<#T##api: String##String#>) { [unowned self] (JSON) -> Void in
+        send { [unowned self] (JSON) -> Void in
             if JSON != nil {
-                self.requestSuccessWithObject(<#result#>)
-                self.requestWasEnded()
+                self.finished(successObject: <#result#>)
             } else {
-                self.requestFailedWithObject(<#result#>)
-                self.requestWasEnded()
+                self.finished(failureObject: <#result#>)
             }
         }
     }

@@ -17,20 +17,20 @@
 //
 //  The framework design by https://github.com/PFei-He/Project-ObjC
 //
-//  ***** 接口 *****
+//  ***** 数据模型接口 *****
 //
 
-#import "BasisRequest.h"
+#import "BaseModel.h"
 
-@interface <#Result#> : PFModel
-
-@end
-
-@interface ___FILEBASENAMEASIDENTIFIER___ : PFModel
+@interface <#Result#> : BaseModel
 
 @end
 
-@interface <#Request#> : BasisRequest
+@interface ___FILEBASENAMEASIDENTIFIER___ : BaseModel
+
+@end
+
+@interface <#Request#> : BaseRequest
 
 /**
  *  @brief 发送请求

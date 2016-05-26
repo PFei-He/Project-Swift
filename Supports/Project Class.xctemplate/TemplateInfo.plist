@@ -49,20 +49,20 @@
 			<string>#import &lt;UIKit/UIKit.h&gt;</string>
 			<key>Values</key>
 			<array>
-				<string>BasisModel</string>
-				<string>BasisViewController</string>
-				<string>BasisTableViewController</string>
-				<string>BasisCollectionViewController</string>
+				<string>BaseModel</string>
+				<string>BaseViewController</string>
+				<string>BaseTableViewController</string>
+				<string>BaseCollectionViewController</string>
 			</array>
 			<key>Suffixes</key>
 			<dict>
-				<key>BasisModel</key>
+				<key>BaseModel</key>
 				<string>Model</string>
-				<key>BasisViewController</key>
+				<key>BaseViewController</key>
 				<string>ViewController</string>
-				<key>BasisTableViewController</key>
+				<key>BaseTableViewController</key>
 				<string>TableViewController</string>
-				<key>BasisCollectionViewController</key>
+				<key>BaseCollectionViewController</key>
 				<string>CollectionViewController</string>
 			</dict>
 		</dict>
@@ -79,9 +79,9 @@
 			<dict>
 				<key>cocoaTouchSubclass</key>
 				<array>
-					<string>BasisViewController</string>
-					<string>BasisTableViewController</string>
-					<string>BasisCollectionViewController</string>
+					<string>BaseViewController</string>
+					<string>BaseTableViewController</string>
+					<string>BaseCollectionViewController</string>
 				</array>
 			</dict>
 			<key>Default</key>
@@ -102,9 +102,9 @@
 			<dict>
 				<key>cocoaTouchSubclass</key>
 				<array>
-					<string>BasisViewController</string>
-					<string>BasisTableViewController</string>
-					<string>BasisCollectionViewController</string>
+					<string>BaseViewController</string>
+					<string>BaseTableViewController</string>
+					<string>BaseCollectionViewController</string>
 				</array>
 				<key>XIB</key>
 				<array>

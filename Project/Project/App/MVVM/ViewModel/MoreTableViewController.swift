@@ -48,7 +48,7 @@ class MoreTableViewController: BaseTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initRequests([req])
+        addRequests([req])
         req.send()
     }
     

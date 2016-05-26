@@ -17,7 +17,7 @@
 //
 //  The framework design by https://github.com/PFei-He/Project-ObjC
 //
-//  ***** 接口 *****
+//  ***** 数据模型接口 *****
 //
 
 #import "___FILEBASENAME___.h"
@@ -35,16 +35,13 @@
 //发送请求
 - (void)send
 {
-    [self requestWillStart];
     @weakify_self
-    [self sendWithAPI:<#(NSString *)#> results:^(id JSON) {
+    [self send:^(id JSON) {
         @strongify_self
         if (JSON) {
-            [self requestSuccessWithObject:<#result#>];
-            [self requestWasEnded];
+            [self finishedWithSuccessObject:<#result#>];
         } else {
-            [self requestFailedWithObject:<#result#>];
-            [self requestWasEnded];
+            [self finishedWithFailureObject:<#result#>];
         }
     }];
 }

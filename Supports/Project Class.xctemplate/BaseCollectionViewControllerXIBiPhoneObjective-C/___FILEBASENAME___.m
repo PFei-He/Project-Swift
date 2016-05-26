@@ -37,8 +37,8 @@
 {
     [super viewDidLoad];
     
-    //初始化网络请求
-    [self initRequests:@[self.req?self.req:(self.req=[<#Request#> new])]];
+    //添加网络请求
+    [self addRequests:@[self.req?self.req:(self.req=[<#Request#> new])]];
     
     //设置参数并发送请求
     [self params];
