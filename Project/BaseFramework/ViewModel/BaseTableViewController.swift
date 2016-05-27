@@ -123,7 +123,7 @@ public class BaseTableViewController: UITableViewController {
     // MARK: - Notification Management
     
     //请求开始通知
-    func requestStartedNotification(notification: NSNotification) {
+    final func requestStartedNotification(notification: NSNotification) {
         if DEBUG_MODE {//调试模式
             print("[ PROJECT ][ DEBUG ] Request started with sender: \(notification.object!).")
             print("[ PROJECT ][ DEBUG ] Requester: \(String(classForCoder)).")
@@ -134,7 +134,7 @@ public class BaseTableViewController: UITableViewController {
     }
     
     //请求结束通知
-    func requestEndedNotification(notification: NSNotification) {
+    final func requestEndedNotification(notification: NSNotification) {
         if DEBUG_MODE {//调试模式
             print("[ PROJECT ][ DEBUG ] Request ended with sender: \(notification.object!).")
         }
@@ -144,7 +144,7 @@ public class BaseTableViewController: UITableViewController {
     }
     
     //请求成功通知
-    func requestSuccessNotification(notification: NSNotification) {
+    final func requestSuccessNotification(notification: NSNotification) {
         if DEBUG_MODE {//调试模式
             print("[ PROJECT ][ DEBUG ] Request success with result: \(notification.object!).")
         }
@@ -163,7 +163,7 @@ public class BaseTableViewController: UITableViewController {
     }
     
     //请求失败通知
-    func requestFailureNotification(notification: NSNotification) {
+    final func requestFailureNotification(notification: NSNotification) {
         if DEBUG_MODE {//调试模式
             print("[ PROJECT ][ DEBUG ] Request failure with result: \(notification.object!).")
         }
