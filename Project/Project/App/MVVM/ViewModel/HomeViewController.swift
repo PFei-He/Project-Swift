@@ -74,7 +74,7 @@ class HomeViewController: BaseViewController {
     // MARK: - Notification Management
     
     override func requestSuccess() {
-        let result = successObject as! WeatherResult
+        let result = successResult as! WeatherResult
         cityLabel.text = result.city
         temperatureLabel.text = String(result.temp)+"℃"
     }

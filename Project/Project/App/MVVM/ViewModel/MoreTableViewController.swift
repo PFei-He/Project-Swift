@@ -60,13 +60,13 @@ class MoreTableViewController: BaseTableViewController {
     // MARK: - UITableViewDataSource Methods
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let model = successObject as! MoreModel
+        let model = successResult as! MoreModel
         return model.result.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("identifier")
-        let model = successObject as! MoreModel
+        let model = successResult as! MoreModel
         let results = MoreResults(JSON: model.result[indexPath.row])
         cell?.textLabel?.text = results.text
         cell?.textLabel?.textColor = Settings.appColor()
