@@ -152,7 +152,7 @@ public class BaseRequest: Model {
     /**
      请求成功
      - Note: 无
-     - Parameter successObject: 请求结果
+     - Parameter successResult: 请求结果
      - Returns: 无
      */
     public func finished(successResult result: AnyObject) {
@@ -167,8 +167,8 @@ public class BaseRequest: Model {
     /**
      请求成功
      - Note: 无
-     - Parameter successObject: 请求结果
-     - Parameter additionalObjects: 附带参数
+     - Parameter successResult: 请求结果
+     - Parameter additionalResults: 附带参数
      - Returns: 无
      */
     public func finished(successResult result: AnyObject, additionalResults: Dictionary<String, AnyObject>) {
@@ -185,7 +185,7 @@ public class BaseRequest: Model {
     /**
      请求失败
      - Note: 无
-     - Parameter failureObject: 请求结果
+     - Parameter failureResult: 请求结果
      - Returns: 无
      */
     public func finished(failureResult result: AnyObject) {
@@ -200,8 +200,8 @@ public class BaseRequest: Model {
     /**
      请求失败
      - Note: 无
-     - Parameter failureObject: 请求结果
-     - Parameter additionalObjects: 附带参数
+     - Parameter failureResult: 请求结果
+     - Parameter additionalResults: 附带参数
      - Returns: 无
      */
     public func finished(failureResult result: AnyObject, additionalResults: Dictionary<String, AnyObject>) {
