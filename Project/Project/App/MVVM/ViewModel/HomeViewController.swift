@@ -71,7 +71,7 @@ class HomeViewController: BaseViewController {
         performSegueWithIdentifier("push", sender: self)
     }
     
-    // MARK: - Notification Management
+    // MARK: - Request Management
     
     override func requestSuccess() {
         let result = successResult as! WeatherResult

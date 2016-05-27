@@ -142,7 +142,7 @@ public class BaseRequest: Model {
                 results(JSON: response.result.value)
             } else {
                 if DEBUG_MODE {
-                    print("[ PROJECT ][ DEBUG ] Request error: \(response.result.error).")
+                    print("[ PROJECT ][ ERROR ] Request error: \(response.result.error).")
                 }
                 results(JSON: nil)
             }
