@@ -48,22 +48,22 @@ private var DEBUG_MODE = false
 public class BaseCollectionViewController: UICollectionViewController {
     
     ///请求成功返回的结果
-    public var successObject:       AnyObject? {
-        return _successObject
+    public var successResult:       AnyObject? {
+        return _successResult
     }
-    private var _successObject:     AnyObject?
+    private var _successResult:     AnyObject?
     
     ///请求失败返回的结果
-    public var failureObject:       AnyObject? {
-        return _failureObject
+    public var failureResult:       AnyObject? {
+        return _failureResult
     }
-    private var _failureObject:     AnyObject?
+    private var _failureResult:     AnyObject?
     
     ///请求返回的附加结果
-    public var additionalObjects:   AnyObject? {
-        return _additionalObjects
+    public var additionalResults:   AnyObject? {
+        return _additionalResults
     }
-    private var _additionalObjects: AnyObject?
+    private var _additionalResults: AnyObject?
     
     ///请求的发送者
     public var sender:              AnyObject? {
@@ -150,10 +150,10 @@ public class BaseCollectionViewController: UICollectionViewController {
         }
         
         //处理请求结果
-        _successObject      = notification.object
+        _successResult      = notification.object
         if notification.userInfo is Dictionary<String, AnyObject> {
-            var dictionary: Dictionary<String, AnyObject> = notification.userInfo as Dictionary<String, AnyObject>
-            _additionalObjects = dictionary.removeValueForKey("sender")
+            var dictionary: Dictionary<String, AnyObject> = notification.userInfo as! Dictionary<String, AnyObject>
+            _additionalResults = dictionary.removeValueForKey("sender")
         }
         _sender             = notification.userInfo?["sender"]
         _requestIsSuccess   = true
@@ -163,22 +163,22 @@ public class BaseCollectionViewController: UICollectionViewController {
     }
     
     //请求失败通知
-    func requestFailedNotification(notification: NSNotification) {
+    func requestFailureNotification(notification: NSNotification) {
         if DEBUG_MODE {//调试模式
-            print("[ PROJECT ][ DEBUG ] Request failed with result: \(notification.object!).")
+            print("[ PROJECT ][ DEBUG ] Request failure with result: \(notification.object!).")
         }
         
         //处理请求结果
-        _failureObject      = notification.object
+        _failureResult      = notification.object
         if notification.userInfo is Dictionary<String, AnyObject> {
-            var dictionary: Dictionary<String, AnyObject> = notification.userInfo as Dictionary<String, AnyObject>
-            _additionalObjects = dictionary.removeValueForKey("sender")
+            var dictionary: Dictionary<String, AnyObject> = notification.userInfo as! Dictionary<String, AnyObject>
+            _additionalResults = dictionary.removeValueForKey("sender")
         }
         _sender             = notification.userInfo?["sender"]
         _requestIsSuccess   = false
         
         //请求失败
-        requestFailed()
+        requestFailure()
     }
     
     // MARK: - Public Methods
@@ -226,8 +226,8 @@ public class BaseCollectionViewController: UICollectionViewController {
      - Parameter 无
      - Returns: 无
      */
-    public func requestFailed() {
-        // Override this method to process the request when request failed.
+    public func requestFailure() {
+        // Override this method to process the request when request failure.
     }
     
     /**

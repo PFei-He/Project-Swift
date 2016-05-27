@@ -71,7 +71,7 @@ public class DebugMode: NSObject {
      */
     class func debugVersion() {
         print("[ PROJECT ][ INFO ] THANK YOU FOR USING !!")
-        print("[ PROJECT ][ INFO ] Current version: 0.0.9.")
+        print("[ PROJECT ][ INFO ] Current version: 0.1.0.")
         print("[ PROJECT ][ INFO ] Programming language: swift.")
         print("[ PROJECT ][ INFO ] Open source license: MIT.")
         print("[ PROJECT ][ INFO ] Join me: https://github.com/PFei-He/Project-Swift.")

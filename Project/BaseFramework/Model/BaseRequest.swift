@@ -79,7 +79,7 @@ public class BaseRequest: Model {
         NSNotificationCenter.defaultCenter().addObserver(requester, selector: NSSelectorFromString("requestStartedNotification:"), name: String(classForCoder)+"Started", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(requester, selector: NSSelectorFromString("requestEndedNotification:"), name: String(classForCoder)+"Ended", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(requester, selector: NSSelectorFromString("requestSuccessNotification:"), name: String(classForCoder)+"Success", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(requester, selector: NSSelectorFromString("requestFailedNotification:"), name: String(classForCoder)+"Failed", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(requester, selector: NSSelectorFromString("requestFailureNotification:"), name: String(classForCoder)+"Failure", object: nil)
     }
     
     /**
@@ -92,7 +92,7 @@ public class BaseRequest: Model {
         NSNotificationCenter.defaultCenter().removeObserver(requester, name: String(classForCoder)+"Started", object: nil)
         NSNotificationCenter.defaultCenter().removeObserver(requester, name: String(classForCoder)+"Ended", object: nil)
         NSNotificationCenter.defaultCenter().removeObserver(requester, name: String(classForCoder)+"Success", object: nil)
-        NSNotificationCenter.defaultCenter().removeObserver(requester, name: String(classForCoder)+"Failed", object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(requester, name: String(classForCoder)+"Failure", object: nil)
     }
     
     /**
@@ -155,10 +155,10 @@ public class BaseRequest: Model {
      - Parameter successObject: 请求结果
      - Returns: 无
      */
-    public func finished(successObject object: AnyObject) {
+    public func finished(successResult result: AnyObject) {
         
         //发送请求成功通知
-        NSNotificationCenter.defaultCenter().postNotificationName(String(classForCoder)+"Success", object: object, userInfo: ["sender": classForCoder])
+        NSNotificationCenter.defaultCenter().postNotificationName(String(classForCoder)+"Success", object: result, userInfo: ["sender": classForCoder])
         
         //发送请求结束通知
         NSNotificationCenter.defaultCenter().postNotificationName(String(classForCoder)+"Ended", object: classForCoder)
@@ -171,12 +171,12 @@ public class BaseRequest: Model {
      - Parameter additionalObjects: 附带参数
      - Returns: 无
      */
-    public func finished(successObject object: AnyObject, additionalObjects: Dictionary<String, AnyObject>) {
+    public func finished(successResult result: AnyObject, additionalResults: Dictionary<String, AnyObject>) {
         
         //发送请求成功通知
-        var dictionary = additionalObjects
+        var dictionary = additionalResults
         dictionary.addEntries(["sender": classForCoder])
-        NSNotificationCenter.defaultCenter().postNotificationName(String(classForCoder)+"Success", object: object, userInfo: dictionary)
+        NSNotificationCenter.defaultCenter().postNotificationName(String(classForCoder)+"Success", object: result, userInfo: dictionary)
         
         //发送请求结束通知
         NSNotificationCenter.defaultCenter().postNotificationName(String(classForCoder)+"Ended", object: classForCoder)
@@ -188,10 +188,10 @@ public class BaseRequest: Model {
      - Parameter failureObject: 请求结果
      - Returns: 无
      */
-    public func finished(failureObject object: AnyObject) {
+    public func finished(failureResult result: AnyObject) {
         
         //发送请求失败通知
-        NSNotificationCenter.defaultCenter().postNotificationName(String(classForCoder)+"Failed", object: object, userInfo: ["sender": classForCoder])
+        NSNotificationCenter.defaultCenter().postNotificationName(String(classForCoder)+"Failure", object: result, userInfo: ["sender": classForCoder])
         
         //发送请求结束通知
         NSNotificationCenter.defaultCenter().postNotificationName(String(classForCoder)+"Ended", object: classForCoder)
@@ -204,12 +204,12 @@ public class BaseRequest: Model {
      - Parameter additionalObjects: 附带参数
      - Returns: 无
      */
-    public func finished(failureObject object: AnyObject, additionalObjects: Dictionary<String, AnyObject>) {
+    public func finished(failureResult result: AnyObject, additionalResults: Dictionary<String, AnyObject>) {
         
         //发送请求失败通知
-        var dictionary = additionalObjects
+        var dictionary = additionalResults
         dictionary.addEntries(["sender": classForCoder])
-        NSNotificationCenter.defaultCenter().postNotificationName(String(classForCoder)+"Failed", object: object, userInfo: dictionary)
+        NSNotificationCenter.defaultCenter().postNotificationName(String(classForCoder)+"Failure", object: result, userInfo: dictionary)
         
         //发送请求结束通知
         NSNotificationCenter.defaultCenter().postNotificationName(String(classForCoder)+"Ended", object: classForCoder)
